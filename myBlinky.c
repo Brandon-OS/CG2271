@@ -1,5 +1,6 @@
 #include "MKL25Z4.h" // Device header
 
+#define SW_POS 6
 #define RED_LED 18	 // PortB Pin 18
 #define GREEN_LED 19 // PortB Pin 19
 #define BLUE_LED 1	 // PortD Pin 1
@@ -17,6 +18,15 @@ enum color_t
 };
 
 enum color_t color_list[3] = {RED, GREEN, BLUE};
+
+static void delay(volatile uint32_t nof)
+{
+	while (nof != 0)
+	{
+		__asm("NOP");
+		nof--;
+	}
+}
 
 void clear_led()
 {
@@ -44,10 +54,8 @@ void PORTD_IRQHandler()
 	NVIC_ClearPendingIRQ(PORTD_IRQn);
 
 	// Updating some variable / flag
-	if (PORTD->ISFR)
-	{
-		color++;
-	}
+	color++;
+	delay(0xFu);
 
 	// Clear INT Flag
 	PORTD->ISFR = 0xffffffff;
@@ -84,16 +92,7 @@ void initSwitch(void)
 	// Enable Interrupts
 	NVIC_SetPriority(PORTD_IRQn, 2);
 	NVIC_ClearPendingIRQ(PORTD_IRQn);
-	NVIC_EnableIRQ(PORTD_IRQn)
-}
-
-static void delay(volatile uint32_t nof)
-{
-	while (nof != 0)
-	{
-		__asm("NOP");
-		nof--;
-	}
+	NVIC_EnableIRQ(PORTD_IRQn);
 }
 
 int main(void)

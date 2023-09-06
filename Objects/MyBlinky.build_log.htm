@@ -1,0 +1,160 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.38.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Brandon Sjarif, National University of Singapore, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.38.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.19
+Assembler:       Armasm.exe V6.19
+Linker/Locator:  ArmLink.exe V6.19
+Library Manager: ArmAr.exe V6.19
+Hex Converter:   FromElf.exe V6.19
+CPU DLL:         SARMCM3.DLL V5.38.0.0
+Dialog DLL:      DARMCM1.DLL V1.19.6.0
+Target DLL:      CMSIS_AGDI.dll V1.33.15.0
+Dialog DLL:      TARMCM1.DLL V1.14.6.0
+ 
+<h2>Project:</h2>
+D:\C. University\Year 3 Semester 1\CG2271\Code\MyBlinky.uvprojx
+Project File Date:  08/30/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+compiling system_MKL25Z4.c...
+myBlinky.c(1): warning: // comments are not allowed in this language [-Wcomment]
+#include "MKL25Z4.h" // Device header
+                     ^
+myBlinky.c(9): warning: no previous extern declaration for non-static variable 'counter' [-Wmissing-variable-declarations]
+unsigned int counter = 0;
+             ^
+myBlinky.c(9): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+unsigned int counter = 0;
+^
+myBlinky.c(10): warning: no previous extern declaration for non-static variable 'color' [-Wmissing-variable-declarations]
+unsigned int color = 0;
+             ^
+myBlinky.c(10): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+unsigned int color = 0;
+^
+myBlinky.c(11): warning: no previous extern declaration for non-static variable 'port' [-Wmissing-variable-declarations]
+unsigned int port = 0;
+             ^
+myBlinky.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+unsigned int port = 0;
+^
+myBlinky.c(20): warning: no previous extern declaration for non-static variable 'color_list' [-Wmissing-variable-declarations]
+enum color_t color_list[3] = {RED, GREEN, BLUE};
+             ^
+myBlinky.c(20): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+enum color_t color_list[3] = {RED, GREEN, BLUE};
+^
+myBlinky.c(31): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void clear_led()
+              ^
+               void
+myBlinky.c(31): warning: no previous prototype for function 'clear_led' [-Wmissing-prototypes]
+void clear_led()
+     ^
+myBlinky.c(31): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void clear_led()
+^
+static 
+myBlinky.c(38): warning: declaration shadows a variable in the global scope [-Wshadow]
+void led_control(enum color_t color)
+                              ^
+myBlinky.c(10): note: previous declaration is here
+unsigned int color = 0;
+             ^
+myBlinky.c(42): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                PTB->PDOR &= ~MASK(RED_LED);
+                          ~~ ^~~~~~~~~~~~~~
+myBlinky.c(44): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                PTB->PDOR &= ~MASK(GREEN_LED);
+                          ~~ ^~~~~~~~~~~~~~~~
+myBlinky.c(46): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                PTD->PDOR &= ~MASK(BLUE_LED);
+                          ~~ ^~~~~~~~~~~~~~~
+myBlinky.c(38): warning: no previous prototype for function 'led_control' [-Wmissing-prototypes]
+void led_control(enum color_t color)
+     ^
+myBlinky.c(38): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void led_control(enum color_t color)
+^
+static 
+myBlinky.c(51): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void PORTD_IRQHandler()
+                     ^
+                      void
+myBlinky.c(51): warning: no previous prototype for function 'PORTD_IRQHandler' [-Wmissing-prototypes]
+void PORTD_IRQHandler()
+     ^
+myBlinky.c(51): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void PORTD_IRQHandler()
+^
+static 
+myBlinky.c(64): warning: no previous prototype for function 'InitGPIO' [-Wmissing-prototypes]
+void InitGPIO(void)
+     ^
+myBlinky.c(64): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void InitGPIO(void)
+^
+static 
+myBlinky.c(90): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+        PTD->PDDR &= ~MASK(SW_POS);
+                  ~~ ^~~~~~~~~~~~~
+myBlinky.c(80): warning: no previous prototype for function 'initSwitch' [-Wmissing-prototypes]
+void initSwitch(void)
+     ^
+myBlinky.c(80): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void initSwitch(void)
+^
+static 
+myBlinky.c(108): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+18 warnings generated.
+compiling myBlinky.c...
+assembling startup_MKL25Z4.s...
+linking...
+Program Size: Code=868 RO-data=224 RW-data=4 ZI-data=264  
+".\Objects\MyBlinky.axf" - 0 Error(s), 18 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.Kinetis_KLxx_DFP.1.15.0.pack
+                Keil.Kinetis_KLxx_DFP.1.15.0
+                NXP Kinetis KLxx Series Device Support and Examples
+   * Component: Startup Version: 2.5.0
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/Device/MKL25Z128xxx4
+  ./RTE/_Target_1
+  C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/Brandon OS/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:2.5.0
+      Include file:  Device/Source/system_MKL25Z4.h
+      Source file:   Device/Source/system_MKL25Z4.c
+      Source file:   Device/Source/ARM/startup_MKL25Z4.s
+Build Time Elapsed:  00:00:04
+</pre>
+</body>
+</html>
