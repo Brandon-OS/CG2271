@@ -5,6 +5,15 @@
 #define GREEN_LED 19 // PortB Pin 19
 #define BLUE_LED 1	 // PortD Pin 1
 #define MASK(x) (1 << (x))
+#define PTB0_Pin 0
+#define PTB1_Pin 1
+#define C_Note 262
+#define D_Note 294
+#define E_Note 330
+#define F_Note 349
+#define G_Note 392
+#define A_Note 440
+#define B_Note 494
 
 unsigned int counter = 0;
 unsigned int color = 0;
@@ -44,6 +53,14 @@ void led_control(enum color_t color)
 		PTB->PDOR &= ~MASK(GREEN_LED);
 	if (color == BLUE)
 		PTD->PDOR &= ~MASK(BLUE_LED);
+}
+
+int freq_calc(int freq) {
+	return ((48000000 / 128) / freq) - 1;  // assume 48 MHz and 128 prescaler (PS)
+}
+
+int duty_cycle_calc (int freq, float duty_cycle) {
+	return (((48000000 / 128) / freq) - 1) * duty_cycle;
 }
 
 //-----------------------Interrupts-----------------------//
@@ -95,14 +112,43 @@ void initSwitch(void)
 	NVIC_EnableIRQ(PORTD_IRQn);
 }
 
+
+
+/*intiPWM () */
+
+void initPWM (void) {
+
+SIM_SCGC5 |= SIM_SCGC5_PORTB_MASK;
+
+PORTB->PCR[PTB0_Pin] &= ~PORT_PCR_MUX_MASK;
+PORTB->PCR[PTB0_Pin] |= PORT_PCR_MUX (3);
+
+PORTB->PCR[PTB1_Pin] &= ~PORT_PCR_MUX_MASK; 
+	PORTB->PCR[PTB1_Pin] |= PORT_PCR_MUX (3);
+
+SIM_SCGC6 |= SIM_SCGC6_TPM1_MASK;
+
+SIM->SOPT2 &= ~SIM_SOPT2_TPMSRC_MASK;
+
+SIM->SOPT2 |= SIM_SOPT2_TPMSRC (1);
+
+TPM1->SC &= ~((TPM_SC_CMOD_MASK) | (TPM_SC_PS_MASK));
+TPM1->SC |= (TPM_SC_CMOD (1) | TPM_SC_PS (7));
+TPM1->SC &= ~(TPM_SC_CPWMS_MASK);
+	
+
+
+TPM1_C0SC &= ~((TPM_CnSC_ELSB_MASK) | (TPM_CnSC_ELSA_MASK) | (TPM_CnSC_MSB_MASK) | (TPM_CnSC_MSA_MASK)); 
+TPM1_C0SC |= (TPM_CnSC_ELSB (1) | TPM_CnSC_MSB (1));
+}
+
 int main(void)
 {
-	initSwitch();
-	InitGPIO();
-
-	while (1)
-	{
-		clear_led();
-		led_control(color_list[color % 3]);
-	}
+	SystemCoreClockUpdate();
+	//initSwitch();
+	//InitGPIO();
+	initPWM();
+	TPM1->MOD = freq_calc(C_Note);
+	TPM1_C0V = duty_cycle_calc(C_Note, 0.2);
+	
 }
