@@ -15,6 +15,11 @@
 #define A_Note 440
 #define B_Note 494
 
+#define BAUD_RATE 9600
+#define UART_TX_PORTE22 22
+#define UART_RX_PORTE23 23
+#define UART2_INT_PRIO 128
+
 unsigned int counter = 0;
 unsigned int color = 0;
 unsigned int port = 0;
@@ -63,6 +68,22 @@ int duty_cycle_calc (int freq, float duty_cycle) {
 	return (((48000000 / 128) / freq) - 1) * duty_cycle;
 }
 
+// UART2 Transmit Poll
+void UART2_Transmit_Poll(uint8_t data) {
+	while(!(UART2->S1 & UART_S1_TDRE_MASK));
+	UART2->D = data;
+}
+
+// UART2 Receive Poll
+uint8_t UART2_Receive_Poll(void) {
+	while(!(UART2->S1 & UART_S1_RDRF_MASK));
+	return (UART2->D);
+}
+
+
+
+
+/**
 //-----------------------Interrupts-----------------------//
 
 void PORTD_IRQHandler()
@@ -98,9 +119,6 @@ void initSwitch(void)
 {
 	// enable clock for PortD
 	SIM->SCGC5 |= (SIM_SCGC5_PORTD_MASK);
-
-	/* Select GPIO and enable pull-up resistors and interrupts on
-	falling edges of pin connected to switch*/
 	PORTD->PCR[SW_POS] |= (PORT_PCR_MUX(1) | PORT_PCR_PS_MASK | PORT_PCR_PE_MASK | PORT_PCR_IRQC(0x0a));
 
 	// Set PORT D Switch bit to input
@@ -111,10 +129,6 @@ void initSwitch(void)
 	NVIC_ClearPendingIRQ(PORTD_IRQn);
 	NVIC_EnableIRQ(PORTD_IRQn);
 }
-
-
-
-/*intiPWM () */
 
 void initPWM (void) {
 
@@ -141,14 +155,49 @@ TPM1->SC &= ~(TPM_SC_CPWMS_MASK);
 TPM1_C0SC &= ~((TPM_CnSC_ELSB_MASK) | (TPM_CnSC_ELSA_MASK) | (TPM_CnSC_MSB_MASK) | (TPM_CnSC_MSA_MASK)); 
 TPM1_C0SC |= (TPM_CnSC_ELSB (1) | TPM_CnSC_MSB (1));
 }
+*/
 
-int main(void)
-{
-	SystemCoreClockUpdate();
-	//initSwitch();
-	//InitGPIO();
-	initPWM();
-	TPM1->MOD = freq_calc(C_Note);
-	TPM1_C0V = duty_cycle_calc(C_Note, 0.2);
+
+/* Init UART2 */
+
+void initUART2 (uint32_t baud_rate) {
+
+	uint32_t divisor, bus_clock;
+
+	SIM_SCGC4 |= SIM_SCGC4_UART2_MASK;
+	SIM_SCGC5 |= SIM_SCGC5_PORTE_MASK;
+
+	PORTE->PCR[UART_TX_PORTE22] &= PORT_PCR_MUX_MASK; 
+	PORTE->PCR[UART_TX_PORTE22] |= PORT_PCR_MUX(4);
+
+	PORTE->PCR [UART_RX_PORTE23] &= ~PORT_PCR_MUX_MASK;
+
+	PORTE->PCR [UART_RX_PORTE23] |= PORT_PCR_MUX (4);
+
+	UART2->C2 &= ~((UART_C2_TE_MASK) | (UART_C2_RE_MASK));
+
+	bus_clock = (DEFAULT_SYSTEM_CLOCK)/2; 
+	divisor = bus_clock / (baud_rate * 16);
+	UART2->BDH = UART_BDH_SBR (divisor >> 8);
+	UART2->BDL = UART_BDL_SBR (divisor);
+
+	UART2->C1 = 0; 
+	UART2->S2 = 0;
+	UART2->C3 = 0;
+
+	UART2->C2 = ((UART_C2_TE_MASK) | (UART_C2_RE_MASK));
+}
+
+// Delay Routine
+int main (void) {
+	uint8_t rx_data = 0x69;
 	
+	SystemCoreClockUpdate();
+	initUART2(BAUD_RATE);
+	
+	while(1) {
+		// Rx and Tx
+		UART2_Transmit_Poll(0x69);
+		delay(0x80000);
+	}
 }
