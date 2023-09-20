@@ -23,6 +23,7 @@
 unsigned int counter = 0;
 unsigned int color = 0;
 unsigned int port = 0;
+static uint8_t rx_data;
 
 enum color_t
 {
@@ -98,6 +99,7 @@ void PORTD_IRQHandler()
 	// Clear INT Flag
 	PORTD->ISFR = 0xffffffff;
 }
+*/
 
 void InitGPIO(void)
 {
@@ -114,7 +116,7 @@ void InitGPIO(void)
 	PTB->PDDR |= (MASK(RED_LED) | MASK(GREEN_LED));
 	PTD->PDDR |= MASK(BLUE_LED);
 }
-
+/*
 void initSwitch(void)
 {
 	// enable clock for PortD
@@ -189,15 +191,35 @@ void initUART2 (uint32_t baud_rate) {
 }
 
 // Delay Routine
-int main (void) {
-	uint8_t rx_data = 0x69;
-	
+int main()
+{
 	SystemCoreClockUpdate();
+// setup code for UART, RGD LED, etc.
+InitGPIO();
 	initUART2(BAUD_RATE);
-	
-	while(1) {
-		// Rx and Tx
-		UART2_Transmit_Poll(0x69);
-		delay(0x80000);
+	while(1)
+{
+rx_data = UART2_Receive_Poll();
+	if (rx_data == 0x31) {
+		led_control(color_list[0]);
+	} else if (rx_data == 0x33) {
+		led_control(color_list[1]);
+	} else if (rx_data == 0x35) {
+		led_control(color_list[1]);
+	} else {
+		clear_led();
 	}
+	/*
+	switch(rx_data){
+		case 0x31:
+			led_control(color_list[0]);
+		case 0x30:
+			clear_led();
+	}
+	*/
+/*
+Perform necessary if-else checks to compare rx_data with expected values.
+Take appropriate action if any expected value is received
+*/
+}
 }

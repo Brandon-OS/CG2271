@@ -28,6 +28,7 @@ Project File Date:  08/30/2023
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
 assembling startup_MKL25Z4.s...
+compiling system_MKL25Z4.c...
 myBlinky.c(1): warning: // comments are not allowed in this language [-Wcomment]
 #include "MKL25Z4.h" // Device header
                      ^
@@ -49,95 +50,105 @@ unsigned int port = 0;
 myBlinky.c(25): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 unsigned int port = 0;
 ^
-myBlinky.c(34): warning: no previous extern declaration for non-static variable 'color_list' [-Wmissing-variable-declarations]
+myBlinky.c(35): warning: no previous extern declaration for non-static variable 'color_list' [-Wmissing-variable-declarations]
 enum color_t color_list[3] = {RED, GREEN, BLUE};
              ^
-myBlinky.c(34): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+myBlinky.c(35): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 enum color_t color_list[3] = {RED, GREEN, BLUE};
 ^
-myBlinky.c(45): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+myBlinky.c(46): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
 void clear_led()
               ^
                void
-myBlinky.c(45): warning: no previous prototype for function 'clear_led' [-Wmissing-prototypes]
+myBlinky.c(46): warning: no previous prototype for function 'clear_led' [-Wmissing-prototypes]
 void clear_led()
      ^
-myBlinky.c(45): note: declare 'static' if the function is not intended to be used outside of this translation unit
+myBlinky.c(46): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void clear_led()
 ^
 static 
-myBlinky.c(52): warning: declaration shadows a variable in the global scope [-Wshadow]
+myBlinky.c(53): warning: declaration shadows a variable in the global scope [-Wshadow]
 void led_control(enum color_t color)
                               ^
 myBlinky.c(24): note: previous declaration is here
 unsigned int color = 0;
              ^
-myBlinky.c(56): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+myBlinky.c(57): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
                 PTB->PDOR &= ~MASK(RED_LED);
                           ~~ ^~~~~~~~~~~~~~
-myBlinky.c(58): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+myBlinky.c(59): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
                 PTB->PDOR &= ~MASK(GREEN_LED);
                           ~~ ^~~~~~~~~~~~~~~~
-myBlinky.c(60): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+myBlinky.c(61): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
                 PTD->PDOR &= ~MASK(BLUE_LED);
                           ~~ ^~~~~~~~~~~~~~~
-myBlinky.c(52): warning: no previous prototype for function 'led_control' [-Wmissing-prototypes]
+myBlinky.c(53): warning: no previous prototype for function 'led_control' [-Wmissing-prototypes]
 void led_control(enum color_t color)
      ^
-myBlinky.c(52): note: declare 'static' if the function is not intended to be used outside of this translation unit
+myBlinky.c(53): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void led_control(enum color_t color)
 ^
 static 
-myBlinky.c(63): warning: no previous prototype for function 'freq_calc' [-Wmissing-prototypes]
+myBlinky.c(64): warning: no previous prototype for function 'freq_calc' [-Wmissing-prototypes]
 int freq_calc(int freq) {
     ^
-myBlinky.c(63): note: declare 'static' if the function is not intended to be used outside of this translation unit
+myBlinky.c(64): note: declare 'static' if the function is not intended to be used outside of this translation unit
 int freq_calc(int freq) {
 ^
 static 
-myBlinky.c(68): warning: implicit conversion turns floating-point number into integer: 'float' to 'int' [-Wfloat-conversion]
+myBlinky.c(69): warning: implicit conversion turns floating-point number into integer: 'float' to 'int' [-Wfloat-conversion]
         return (((48000000 / 128) / freq) - 1) * duty_cycle;
         ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-myBlinky.c(67): warning: no previous prototype for function 'duty_cycle_calc' [-Wmissing-prototypes]
+myBlinky.c(68): warning: no previous prototype for function 'duty_cycle_calc' [-Wmissing-prototypes]
 int duty_cycle_calc (int freq, float duty_cycle) {
     ^
-myBlinky.c(67): note: declare 'static' if the function is not intended to be used outside of this translation unit
+myBlinky.c(68): note: declare 'static' if the function is not intended to be used outside of this translation unit
 int duty_cycle_calc (int freq, float duty_cycle) {
 ^
 static 
-myBlinky.c(72): warning: no previous prototype for function 'UART2_Transmit_Poll' [-Wmissing-prototypes]
+myBlinky.c(73): warning: no previous prototype for function 'UART2_Transmit_Poll' [-Wmissing-prototypes]
 void UART2_Transmit_Poll(uint8_t data) {
      ^
-myBlinky.c(72): note: declare 'static' if the function is not intended to be used outside of this translation unit
+myBlinky.c(73): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void UART2_Transmit_Poll(uint8_t data) {
 ^
 static 
-myBlinky.c(78): warning: no previous prototype for function 'UART2_Receive_Poll' [-Wmissing-prototypes]
+myBlinky.c(79): warning: no previous prototype for function 'UART2_Receive_Poll' [-Wmissing-prototypes]
 uint8_t UART2_Receive_Poll(void) {
         ^
-myBlinky.c(78): note: declare 'static' if the function is not intended to be used outside of this translation unit
+myBlinky.c(79): note: declare 'static' if the function is not intended to be used outside of this translation unit
 uint8_t UART2_Receive_Poll(void) {
 ^
 static 
-myBlinky.c(163): warning: no previous prototype for function 'initUART2' [-Wmissing-prototypes]
+myBlinky.c(104): warning: no previous prototype for function 'InitGPIO' [-Wmissing-prototypes]
+void InitGPIO(void)
+     ^
+myBlinky.c(104): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void InitGPIO(void)
+^
+static 
+myBlinky.c(165): warning: no previous prototype for function 'initUART2' [-Wmissing-prototypes]
 void initUART2 (uint32_t baud_rate) {
      ^
-myBlinky.c(163): note: declare 'static' if the function is not intended to be used outside of this translation unit
+myBlinky.c(165): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void initUART2 (uint32_t baud_rate) {
 ^
 static 
-myBlinky.c(203): warning: no newline at end of file [-Wnewline-eof]
+myBlinky.c(194): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+int main()
+        ^
+         void
+myBlinky.c(221): warning: no newline at end of file [-Wnewline-eof]
 }
  ^
-myBlinky.c(193): warning: unused variable 'rx_data' [-Wunused-variable]
-        uint8_t rx_data = 0x69;
-                ^
-20 warnings generated.
+myBlinky.c(37): warning: unused function 'delay' [-Wunused-function]
+static void delay(volatile uint32_t nof)
+            ^
+22 warnings generated.
 compiling myBlinky.c...
-compiling system_MKL25Z4.c...
 linking...
-Program Size: Code=1356 RO-data=224 RW-data=4 ZI-data=256  
-".\Objects\MyBlinky.axf" - 0 Error(s), 20 Warning(s).
+Program Size: Code=1588 RO-data=224 RW-data=8 ZI-data=264  
+".\Objects\MyBlinky.axf" - 0 Error(s), 22 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -167,7 +178,7 @@ Package Vendor: Keil
       Source file:   Device/Source/system_MKL25Z4.c
       Include file:  Device/Source/system_MKL25Z4.h
       Source file:   Device/Source/ARM/startup_MKL25Z4.s
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>
