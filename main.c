@@ -20,7 +20,7 @@
  *---------------------------------------------------------------------------*/
 
 void motor_thread (void *argument) {
-  initPWM();
+  initMotor();
 	for (;;) {
 		forward();
 	}

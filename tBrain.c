@@ -61,14 +61,6 @@ void led_control(enum color_t color)
 		PTD->PDOR &= ~MASK(BLUE_LED);
 }
 
-int freq_calc(int freq) {
-	return ((48000000 / 128) / freq) - 1;  // assume 48 MHz and 128 prescaler (PS)
-}
-
-int duty_cycle_calc (int freq, float duty_cycle) {
-	return (((48000000 / 128) / freq) - 1) * duty_cycle;
-}
-
 // UART2 Transmit Poll
 void UART2_Transmit_Poll(uint8_t data) {
 	while(!(UART2->S1 & UART_S1_TDRE_MASK));
@@ -191,7 +183,7 @@ void initUART2 (uint32_t baud_rate) {
 }
 
 // Delay Routine
-int main()
+int tBrain_main()
 {
 	SystemCoreClockUpdate();
 // setup code for UART, RGD LED, etc.
