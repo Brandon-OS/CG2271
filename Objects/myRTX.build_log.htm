@@ -32,7 +32,7 @@ C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\
 //  ==== Enumerations, structures, defines ====
 ^
 main.c(9): warning: In file included from...
-./MotorControl.h(9): warning: // comments are not allowed in this language [-Wcomment]
+./MotorControl.h(10): warning: // comments are not allowed in this language [-Wcomment]
 // Function prototypes
 ^
 main.c(10): warning: In file included from...
@@ -87,8 +87,37 @@ main.c(15): note: declare 'static' if the variable is not intended to be used ou
 13 warnings generated.
 compiling main.c...
 assembling startup_MKL25Z4.s...
+Serial.c(1): warning: // comments are not allowed in this language [-Wcomment]
+#include "MKL25Z4.h" // Device header
+                     ^
+Serial.c(9): warning: no previous prototype for function 'UART2_Receive_Poll' [-Wmissing-prototypes]
+uint8_t UART2_Receive_Poll(void) {
+        ^
+Serial.c(9): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint8_t UART2_Receive_Poll(void) {
+^
+static 
+Serial.c(14): warning: no previous prototype for function 'initUART2' [-Wmissing-prototypes]
+void initUART2 (uint32_t baud_rate) { 
+     ^
+Serial.c(14): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void initUART2 (uint32_t baud_rate) { 
+^
+static 
+Serial.c(46): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+Serial.c(41): warning: no previous prototype for function 'serial' [-Wmissing-prototypes]
+uint8_t serial(void) {
+        ^
+Serial.c(41): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint8_t serial(void) {
+^
+static 
+5 warnings generated.
+compiling Serial.c...
 Audio.c(2): warning: In file included from...
-./MotorControl.h(9): warning: // comments are not allowed in this language [-Wcomment]
+./MotorControl.h(10): warning: // comments are not allowed in this language [-Wcomment]
 // Function prototypes
 ^
 Audio.c(3): warning: In file included from...
@@ -119,9 +148,6 @@ Audio.c(34): warning: implicit conversion changes signedness: 'int' to 'uint32_t
 Audio.c(35): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
                         TPM2_C0V = duty_cycle_calc(freq, (float) 0.5);  
                                  ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Audio.c(35): warning: implicit conversion from 'float' to 'int' changes non-zero value from 0.5 to 0 [-Wfloat-zero-conversion]
-                        TPM2_C0V = duty_cycle_calc(freq, (float) 0.5);  
-                                   ~~~~~~~~~~~~~~~       ^~~~~~~~~~~
 Audio.c(40): warning: no previous prototype for function 'stop_sound' [-Wmissing-prototypes]
 void stop_sound(void) {
      ^
@@ -129,9 +155,14 @@ Audio.c(40): note: declare 'static' if the function is not intended to be used o
 void stop_sound(void) {
 ^
 static 
-12 warnings generated.
+11 warnings generated.
 compiling Audio.c...
 compiling system_MKL25Z4.c...
+LED.c(67): warning: no newline at end of file [-Wnewline-eof]
+*/
+  ^
+1 warning generated.
+compiling LED.c...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(27): warning: In file included from...
 ./RTE/CMSIS\RTX_Config.h(38): warning: // comments are not allowed in this language [-Wcomment]
 //-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
@@ -154,6 +185,20 @@ C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Sour
 ^
 5 warnings generated.
 compiling rtx_lib.c...
+RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
+/// Kernel Information
+^
+RTE/CMSIS/RTX_Config.c(31): warning: // comments are not allowed in this language [-Wcomment]
+// OS Idle Thread
+^
+3 warnings generated.
+compiling RTX_Config.c...
 MotorControl.c(3): warning: // comments are not allowed in this language [-Wcomment]
 #define PTB0_Pin 0 //FRONT RIGHT
                    ^
@@ -174,29 +219,36 @@ MotorControl.c(14): note: declare 'static' if the function is not intended to be
 int duty_cycle_calc (int freq, float duty_cycle) {
 ^
 static 
-MotorControl.c(18): warning: no previous prototype for function 'parseMove' [-Wmissing-prototypes]
+MotorControl.c(19): warning: implicit conversion turns floating-point number into integer: 'float' to 'int' [-Wfloat-conversion]
+        return 6000*(duty_cycle/1000);
+        ~~~~~~ ~~~~^~~~~~~~~~~~~~~~~~
+MotorControl.c(18): warning: no previous prototype for function 'pwm_cal' [-Wmissing-prototypes]
+int pwm_cal(float duty_cycle) {
+    ^
+MotorControl.c(18): note: declare 'static' if the function is not intended to be used outside of this translation unit
+int pwm_cal(float duty_cycle) {
+^
+static 
+MotorControl.c(21): warning: no previous prototype for function 'parseMove' [-Wmissing-prototypes]
 char parseMove(uint8_t data) {
      ^
-MotorControl.c(18): note: declare 'static' if the function is not intended to be used outside of this translation unit
+MotorControl.c(21): note: declare 'static' if the function is not intended to be used outside of this translation unit
 char parseMove(uint8_t data) {
 ^
 static 
-MotorControl.c(31): warning: non-void function does not return a value in all control paths [-Wreturn-type]
+MotorControl.c(34): warning: non-void function does not return a value in all control paths [-Wreturn-type]
 }
 ^
-MotorControl.c(33): warning: no previous prototype for function 'initMotor' [-Wmissing-prototypes]
+MotorControl.c(36): warning: no previous prototype for function 'initMotor' [-Wmissing-prototypes]
 void initMotor (void) {
      ^
-MotorControl.c(33): note: declare 'static' if the function is not intended to be used outside of this translation unit
+MotorControl.c(36): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void initMotor (void) {
 ^
 static 
 MotorControl.c(80): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        uint32_t pwm = duty_cycle_calc(50, MOTOR_DUTY);
-                 ~~~   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(79): warning: unused parameter 'val' [-Wunused-parameter]
-void rightMotorMove(int dir, float val) {
-                                   ^
+        uint32_t pwm = pwm_cal(val);
+                 ~~~   ^~~~~~~~~~~~
 MotorControl.c(79): warning: no previous prototype for function 'rightMotorMove' [-Wmissing-prototypes]
 void rightMotorMove(int dir, float val) {
      ^
@@ -205,11 +257,8 @@ void rightMotorMove(int dir, float val) {
 ^
 static 
 MotorControl.c(94): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        uint32_t pwm = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY);
-                 ~~~   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(93): warning: unused parameter 'val' [-Wunused-parameter]
-void leftMotorMove(int dir, float val) {
-                                  ^
+        uint32_t pwm = pwm_cal(val);
+                 ~~~   ^~~~~~~~~~~~
 MotorControl.c(93): warning: no previous prototype for function 'leftMotorMove' [-Wmissing-prototypes]
 void leftMotorMove(int dir, float val) {
      ^
@@ -285,57 +334,9 @@ void leftBackward(void) {
 static 
 23 warnings generated.
 compiling MotorControl.c...
-LED.c(67): warning: no newline at end of file [-Wnewline-eof]
-*/
-  ^
-1 warning generated.
-compiling LED.c...
-Serial.c(1): warning: // comments are not allowed in this language [-Wcomment]
-#include "MKL25Z4.h" // Device header
-                     ^
-Serial.c(9): warning: no previous prototype for function 'UART2_Receive_Poll' [-Wmissing-prototypes]
-uint8_t UART2_Receive_Poll(void) {
-        ^
-Serial.c(9): note: declare 'static' if the function is not intended to be used outside of this translation unit
-uint8_t UART2_Receive_Poll(void) {
-^
-static 
-Serial.c(14): warning: no previous prototype for function 'initUART2' [-Wmissing-prototypes]
-void initUART2 (uint32_t baud_rate) { 
-     ^
-Serial.c(14): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void initUART2 (uint32_t baud_rate) { 
-^
-static 
-Serial.c(46): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-Serial.c(41): warning: no previous prototype for function 'serial' [-Wmissing-prototypes]
-uint8_t serial(void) {
-        ^
-Serial.c(41): note: declare 'static' if the function is not intended to be used outside of this translation unit
-uint8_t serial(void) {
-^
-static 
-5 warnings generated.
-compiling Serial.c...
-RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
-//  ==== Enumerations, structures, defines ====
-^
-RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
-/// Kernel Information
-^
-RTE/CMSIS/RTX_Config.c(31): warning: // comments are not allowed in this language [-Wcomment]
-// OS Idle Thread
-^
-3 warnings generated.
-compiling RTX_Config.c...
 linking...
-Program Size: Code=7200 RO-data=496 RW-data=168 ZI-data=5216  
-".\Objects\myRTX.axf" - 0 Error(s), 62 Warning(s).
+Program Size: Code=2544 RO-data=496 RW-data=168 ZI-data=5200  
+".\Objects\myRTX.axf" - 0 Error(s), 61 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -389,7 +390,7 @@ Package Vendor: Keil
       Source file:   Device/Source/system_MKL25Z4.c
       Source file:   Device/Source/ARM/startup_MKL25Z4.s
       Include file:  Device/Source/system_MKL25Z4.h
-Build Time Elapsed:  00:00:11
+Build Time Elapsed:  00:00:12
 </pre>
 </body>
 </html>

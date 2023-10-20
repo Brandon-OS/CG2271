@@ -15,6 +15,9 @@ int duty_cycle_calc (int freq, float duty_cycle) {
 	return (((48000000 / 128) / freq) - 1) * duty_cycle;
 }
 
+int pwm_cal(float duty_cycle) {
+	return 6000*(duty_cycle/1000);
+}
 char parseMove(uint8_t data) {
 	switch (data) {
 		case 0x30:
@@ -49,15 +52,15 @@ void initMotor (void) {
 	SIM->SOPT2 &= ~SIM_SOPT2_TPMSRC_MASK;
 	SIM->SOPT2 |= SIM_SOPT2_TPMSRC (1);
 	
-	TPM1->MOD = 7500;
-	TPM2->MOD = 7500;
+	TPM1->MOD = 6000;
+	TPM2->MOD = 6000;
 	
 	TPM1->SC &= ~((TPM_SC_CMOD_MASK) | (TPM_SC_PS_MASK));
-	TPM1->SC |= (TPM_SC_CMOD (1) | TPM_SC_PS (7));
+	TPM1->SC |= (TPM_SC_CMOD (1) | TPM_SC_PS (4));
 	TPM1->SC &= ~(TPM_SC_CPWMS_MASK);
 	
 	TPM2->SC &= ~((TPM_SC_CMOD_MASK) | (TPM_SC_PS_MASK));
-	TPM2->SC |= (TPM_SC_CMOD (1) | TPM_SC_PS (7));
+	TPM2->SC |= (TPM_SC_CMOD (1) | TPM_SC_PS (4));
 	TPM2->SC &= ~(TPM_SC_CPWMS_MASK);
 
 	TPM1_C0SC &= ~((TPM_CnSC_ELSB_MASK) | (TPM_CnSC_ELSA_MASK) | (TPM_CnSC_MSB_MASK) | (TPM_CnSC_MSA_MASK)); 
@@ -71,13 +74,10 @@ void initMotor (void) {
 	
 	TPM2_C1SC &= ~((TPM_CnSC_ELSB_MASK) | (TPM_CnSC_ELSA_MASK) | (TPM_CnSC_MSB_MASK) | (TPM_CnSC_MSA_MASK)); 
 	TPM2_C1SC |= (TPM_CnSC_ELSB (1) | TPM_CnSC_MSB (1));
-
-	TPM1->CNT = 0;
-	TPM2->CNT = 0;
 }
 
 void rightMotorMove(int dir, float val) {
-	uint32_t pwm = duty_cycle_calc(50, MOTOR_DUTY);
+	uint32_t pwm = pwm_cal(val);
 	switch (dir) {
 		case 1: 
 			TPM1_C0V = pwm;
@@ -91,7 +91,7 @@ void rightMotorMove(int dir, float val) {
 }
 
 void leftMotorMove(int dir, float val) {
-	uint32_t pwm = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY);
+	uint32_t pwm = pwm_cal(val);
 	switch (dir) {
 		case 1: 
 			TPM2_C0V = pwm;

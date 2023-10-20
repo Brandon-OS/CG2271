@@ -55,11 +55,16 @@ int main (void) {
  
   // System Initialization
   SystemCoreClockUpdate();
- 
+	initMotor();
+	/**
   osKernelInitialize();                 // Initialize CMSIS-RTOS
 	osThreadNew(brain_thread, NULL, NULL);
   osThreadNew(motor_thread, NULL, NULL);    // Create application main thread
 	osKernelStart();                      // Start thread execution
   for (;;) {
+	}
+	*/
+	while(1) {
+		forward();
 	}
 }
