@@ -1,9 +1,9 @@
 #include "MKL25Z4.h" 
 
-#define PTB0_Pin 0
-#define PTB1_Pin 1
-#define PTB2_Pin 2
-#define PTB3_Pin 3
+#define PTB0_Pin 0 //FRONT RIGHT
+#define PTB1_Pin 1 //BACK RIGHT
+#define PTB2_Pin 2 //FRONT LEFT
+#define PTB3_Pin 3 //BACK LEFT
 #define MOTOR_FREQ 500
 #define MOTOR_DUTY 1
 
@@ -32,51 +32,119 @@ char parseMove(uint8_t data) {
 
 void initMotor (void) {
 	SIM_SCGC5 |= SIM_SCGC5_PORTB_MASK;
-
+  
 	PORTB->PCR[PTB0_Pin] &= ~PORT_PCR_MUX_MASK;
 	PORTB->PCR[PTB0_Pin] |= PORT_PCR_MUX (3);
 
 	PORTB->PCR[PTB1_Pin] &= ~PORT_PCR_MUX_MASK; 
 	PORTB->PCR[PTB1_Pin] |= PORT_PCR_MUX (3);
-
+	
 	PORTB->PCR[PTB2_Pin] &= ~PORT_PCR_MUX_MASK;
 	PORTB->PCR[PTB2_Pin] |= PORT_PCR_MUX (3);
 
 	PORTB->PCR[PTB3_Pin] &= ~PORT_PCR_MUX_MASK; 
 	PORTB->PCR[PTB3_Pin] |= PORT_PCR_MUX (3);
 
-	SIM_SCGC6 |= SIM_SCGC6_TPM1_MASK;
+	SIM_SCGC6 |= SIM_SCGC6_TPM1_MASK | SIM_SCGC6_TPM2_MASK;
 	SIM->SOPT2 &= ~SIM_SOPT2_TPMSRC_MASK;
 	SIM->SOPT2 |= SIM_SOPT2_TPMSRC (1);
-
+	
+	TPM1->MOD = 7500;
+	TPM2->MOD = 7500;
+	
 	TPM1->SC &= ~((TPM_SC_CMOD_MASK) | (TPM_SC_PS_MASK));
 	TPM1->SC |= (TPM_SC_CMOD (1) | TPM_SC_PS (7));
 	TPM1->SC &= ~(TPM_SC_CPWMS_MASK);
+	
+	TPM2->SC &= ~((TPM_SC_CMOD_MASK) | (TPM_SC_PS_MASK));
+	TPM2->SC |= (TPM_SC_CMOD (1) | TPM_SC_PS (7));
+	TPM2->SC &= ~(TPM_SC_CPWMS_MASK);
 
 	TPM1_C0SC &= ~((TPM_CnSC_ELSB_MASK) | (TPM_CnSC_ELSA_MASK) | (TPM_CnSC_MSB_MASK) | (TPM_CnSC_MSA_MASK)); 
 	TPM1_C0SC |= (TPM_CnSC_ELSB (1) | TPM_CnSC_MSB (1));
+	
+	TPM1_C1SC &= ~((TPM_CnSC_ELSB_MASK) | (TPM_CnSC_ELSA_MASK) | (TPM_CnSC_MSB_MASK) | (TPM_CnSC_MSA_MASK)); 
+	TPM1_C1SC |= (TPM_CnSC_ELSB (1) | TPM_CnSC_MSB (1));
+	
+	TPM2_C0SC &= ~((TPM_CnSC_ELSB_MASK) | (TPM_CnSC_ELSA_MASK) | (TPM_CnSC_MSB_MASK) | (TPM_CnSC_MSA_MASK)); 
+	TPM2_C0SC |= (TPM_CnSC_ELSB (1) | TPM_CnSC_MSB (1));
+	
+	TPM2_C1SC &= ~((TPM_CnSC_ELSB_MASK) | (TPM_CnSC_ELSA_MASK) | (TPM_CnSC_MSB_MASK) | (TPM_CnSC_MSA_MASK)); 
+	TPM2_C1SC |= (TPM_CnSC_ELSB (1) | TPM_CnSC_MSB (1));
+
+	TPM1->CNT = 0;
+	TPM2->CNT = 0;
+}
+
+void rightMotorMove(int dir, float val) {
+	uint32_t pwm = duty_cycle_calc(50, MOTOR_DUTY);
+	switch (dir) {
+		case 1: 
+			TPM1_C0V = pwm;
+			TPM1_C1V = 0;
+			break;
+		case -1:
+			TPM1_C0V = 0;
+			TPM1_C1V = pwm;
+			break;
+	}
+}
+
+void leftMotorMove(int dir, float val) {
+	uint32_t pwm = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY);
+	switch (dir) {
+		case 1: 
+			TPM2_C0V = pwm;
+			TPM2_C1V = 0;
+			break;
+		case -1:
+			TPM2_C0V = 0;
+			TPM2_C1V = pwm;
+			break;
+	}
 }
 
 void forward(void) {
-	TPM1->MOD = freq_calc(MOTOR_FREQ); // frequency
-	TPM1_C0V = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY);
-	TPM1_C1V = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY);	// duty cycle
+	rightMotorMove(1, 100);
+	leftMotorMove(1, 100);
+}
+
+void backward(void) {
+	rightMotorMove(-1, 100);
+	leftMotorMove(-1, 100);
 }
 
 void left(void) {
-	TPM1->MOD = freq_calc(MOTOR_FREQ); // frequency
-	TPM1_C0V = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY/2);
-	TPM1_C1V = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY);	// duty cycle
+	rightMotorMove(-1, 100);
+	leftMotorMove(1, 100);
 }
 
 void right(void) {
-	TPM1->MOD = freq_calc(MOTOR_FREQ); // frequency
-	TPM1_C0V = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY);
-	TPM1_C1V = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY/2);	// duty cycle
+	rightMotorMove(1, 100);
+	leftMotorMove(-1, 100);
 }
 
 void stop(void) {
-	TPM1->MOD = freq_calc(MOTOR_FREQ); // frequency
-	TPM1_C0V = duty_cycle_calc(MOTOR_FREQ, 0);
-	TPM1_C1V = duty_cycle_calc(MOTOR_FREQ, 0);	// duty cycle
+	rightMotorMove(1, 0);
+	leftMotorMove(1, 0);
+}
+
+void rightForward(void) {
+	rightMotorMove(1, 5);
+	leftMotorMove(1, 100);
+}
+
+void rightBackwark(void) {
+	rightMotorMove(-1, 5);
+	leftMotorMove(-1, 100);
+}
+
+void leftForward(void) {
+	rightMotorMove(1, 100);
+	leftMotorMove(1, 5);
+}
+
+void leftBackward(void) {
+	rightMotorMove(-1, 100);
+	leftMotorMove(-1, 5);
 }

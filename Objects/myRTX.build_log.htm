@@ -22,148 +22,11 @@ Dialog DLL:      TARMCM1.DLL V1.14.6.0
  
 <h2>Project:</h2>
 D:\C. University\Year 3 Semester 1\CG2271\newRTX\myRTX.uvprojx
-Project File Date:  10/18/2023
+Project File Date:  10/20/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
-MotorControl.c(9): warning: // comments are not allowed in this language [-Wcomment]
-        return ((48000000 / 128) / freq) - 1;  // assume 48 MHz and 128 prescaler (PS)
-                                               ^
-MotorControl.c(8): warning: no previous prototype for function 'freq_calc' [-Wmissing-prototypes]
-int freq_calc(int freq) {
-    ^
-MotorControl.c(8): note: declare 'static' if the function is not intended to be used outside of this translation unit
-int freq_calc(int freq) {
-^
-static 
-MotorControl.c(13): warning: implicit conversion turns floating-point number into integer: 'float' to 'int' [-Wfloat-conversion]
-        return (((48000000 / 128) / freq) - 1) * duty_cycle;
-        ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-MotorControl.c(12): warning: no previous prototype for function 'duty_cycle_calc' [-Wmissing-prototypes]
-int duty_cycle_calc (int freq, float duty_cycle) {
-    ^
-MotorControl.c(12): note: declare 'static' if the function is not intended to be used outside of this translation unit
-int duty_cycle_calc (int freq, float duty_cycle) {
-^
-static 
-MotorControl.c(16): warning: no previous prototype for function 'parseMove' [-Wmissing-prototypes]
-char parseMove(uint8_t data) {
-     ^
-MotorControl.c(16): note: declare 'static' if the function is not intended to be used outside of this translation unit
-char parseMove(uint8_t data) {
-^
-static 
-MotorControl.c(29): warning: non-void function does not return a value in all control paths [-Wreturn-type]
-}
-^
-MotorControl.c(31): warning: no previous prototype for function 'initMotor' [-Wmissing-prototypes]
-void initMotor (void) {
-     ^
-MotorControl.c(31): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void initMotor (void) {
-^
-static 
-MotorControl.c(53): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        TPM1->MOD = freq_calc(MOTOR_FREQ); // frequency
-                  ~ ^~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(54): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        TPM1_C0V = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY);
-                 ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(55): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        TPM1_C1V = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY);     // duty cycle
-                 ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(52): warning: no previous prototype for function 'forward' [-Wmissing-prototypes]
-void forward(void) {
-     ^
-MotorControl.c(52): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void forward(void) {
-^
-static 
-MotorControl.c(59): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        TPM1->MOD = freq_calc(MOTOR_FREQ); // frequency
-                  ~ ^~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(60): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        TPM1_C0V = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY/2);
-                 ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(61): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        TPM1_C1V = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY);     // duty cycle
-                 ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(58): warning: no previous prototype for function 'left' [-Wmissing-prototypes]
-void left(void) {
-     ^
-MotorControl.c(58): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void left(void) {
-^
-static 
-MotorControl.c(65): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        TPM1->MOD = freq_calc(MOTOR_FREQ); // frequency
-                  ~ ^~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(66): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        TPM1_C0V = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY);
-                 ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(67): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        TPM1_C1V = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY/2);   // duty cycle
-                 ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(64): warning: no previous prototype for function 'right' [-Wmissing-prototypes]
-void right(void) {
-     ^
-MotorControl.c(64): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void right(void) {
-^
-static 
-MotorControl.c(71): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        TPM1->MOD = freq_calc(MOTOR_FREQ); // frequency
-                  ~ ^~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(72): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        TPM1_C0V = duty_cycle_calc(MOTOR_FREQ, 0);
-                 ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(73): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-        TPM1_C1V = duty_cycle_calc(MOTOR_FREQ, 0);      // duty cycle
-                 ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MotorControl.c(74): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-MotorControl.c(70): warning: no previous prototype for function 'stop' [-Wmissing-prototypes]
-void stop(void) {
-     ^
-MotorControl.c(70): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void stop(void) {
-^
-static 
-24 warnings generated.
-compiling MotorControl.c...
-Serial.c(1): warning: // comments are not allowed in this language [-Wcomment]
-#include "MKL25Z4.h" // Device header
-                     ^
-Serial.c(9): warning: no previous prototype for function 'UART2_Receive_Poll' [-Wmissing-prototypes]
-uint8_t UART2_Receive_Poll(void) {
-        ^
-Serial.c(9): note: declare 'static' if the function is not intended to be used outside of this translation unit
-uint8_t UART2_Receive_Poll(void) {
-^
-static 
-Serial.c(14): warning: no previous prototype for function 'initUART2' [-Wmissing-prototypes]
-void initUART2 (uint32_t baud_rate) { 
-     ^
-Serial.c(14): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void initUART2 (uint32_t baud_rate) { 
-^
-static 
-Serial.c(46): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-Serial.c(41): warning: no previous prototype for function 'serial' [-Wmissing-prototypes]
-uint8_t serial(void) {
-        ^
-Serial.c(41): note: declare 'static' if the function is not intended to be used outside of this translation unit
-uint8_t serial(void) {
-^
-static 
-5 warnings generated.
-compiling Serial.c...
-compiling system_MKL25Z4.c...
-assembling startup_MKL25Z4.s...
 main.c(7): warning: In file included from...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
 //  ==== Enumerations, structures, defines ====
@@ -176,9 +39,6 @@ main.c(10): warning: In file included from...
 ./Serial.h(6): warning: // comments are not allowed in this language [-Wcomment]
 // Function prototypes
 ^
-main.c(23): warning: implicit declaration of function 'initMotor' [-Wimplicit-function-declaration]
-  initMotor();
-  ^
 main.c(22): warning: unused parameter 'argument' [-Wunused-parameter]
 void motor_thread (void *argument) {
                          ^
@@ -224,8 +84,54 @@ main.c(15): warning: no previous extern declaration for non-static variable 'rx_
 main.c(15): note: declare 'static' if the variable is not intended to be used outside of this translation unit
  uint8_t rx_data;
  ^
-14 warnings generated.
+13 warnings generated.
 compiling main.c...
+assembling startup_MKL25Z4.s...
+Audio.c(2): warning: In file included from...
+./MotorControl.h(9): warning: // comments are not allowed in this language [-Wcomment]
+// Function prototypes
+^
+Audio.c(3): warning: In file included from...
+./Audio.h(96): warning: // comments are not allowed in this language [-Wcomment]
+// Function prototypes
+^
+Audio.c(4): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+Audio.c(8): warning: use of GNU empty initializer extension [-Wgnu-empty-initializer]
+int end_song[] = {
+                 ^
+Audio.c(8): warning: zero size arrays are an extension [-Wzero-length-array]
+Audio.c(8): warning: no previous extern declaration for non-static variable 'end_song' [-Wmissing-variable-declarations]
+int end_song[] = {
+    ^
+Audio.c(8): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int end_song[] = {
+^
+Audio.c(31): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for (int i = 0; i < size; ++i) {
+             ^
+Audio.c(31): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+Audio.c(34): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                        TPM2->MOD = freq;
+                                  ~ ^~~~
+Audio.c(35): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                        TPM2_C0V = duty_cycle_calc(freq, (float) 0.5);  
+                                 ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Audio.c(35): warning: implicit conversion from 'float' to 'int' changes non-zero value from 0.5 to 0 [-Wfloat-zero-conversion]
+                        TPM2_C0V = duty_cycle_calc(freq, (float) 0.5);  
+                                   ~~~~~~~~~~~~~~~       ^~~~~~~~~~~
+Audio.c(40): warning: no previous prototype for function 'stop_sound' [-Wmissing-prototypes]
+void stop_sound(void) {
+     ^
+Audio.c(40): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void stop_sound(void) {
+^
+static 
+12 warnings generated.
+compiling Audio.c...
+compiling system_MKL25Z4.c...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(27): warning: In file included from...
 ./RTE/CMSIS\RTX_Config.h(38): warning: // comments are not allowed in this language [-Wcomment]
 //-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
@@ -248,39 +154,171 @@ C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Sour
 ^
 5 warnings generated.
 compiling rtx_lib.c...
-Audio.c(2): warning: In file included from...
-./MotorControl.h(9): warning: // comments are not allowed in this language [-Wcomment]
-// Function prototypes
-^
-Audio.c(15): warning: no previous prototype for function 'initAudio' [-Wmissing-prototypes]
-void initAudio(void) {
-     ^
-Audio.c(15): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void initAudio(void) {
+MotorControl.c(3): warning: // comments are not allowed in this language [-Wcomment]
+#define PTB0_Pin 0 //FRONT RIGHT
+                   ^
+MotorControl.c(10): warning: no previous prototype for function 'freq_calc' [-Wmissing-prototypes]
+int freq_calc(int freq) {
+    ^
+MotorControl.c(10): note: declare 'static' if the function is not intended to be used outside of this translation unit
+int freq_calc(int freq) {
 ^
 static 
-Audio.c(37): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-        for (int i = 0; i < size; ++i) {
-             ^
-Audio.c(37): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-Audio.c(39): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-                TPM2->MOD = freq;
-                          ~ ^~~~
-Audio.c(40): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-                TPM2_C0V = duty_cycle_calc(freq, 1);
-                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~
-Audio.c(42): warning: no newline at end of file [-Wnewline-eof]
+MotorControl.c(15): warning: implicit conversion turns floating-point number into integer: 'float' to 'int' [-Wfloat-conversion]
+        return (((48000000 / 128) / freq) - 1) * duty_cycle;
+        ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+MotorControl.c(14): warning: no previous prototype for function 'duty_cycle_calc' [-Wmissing-prototypes]
+int duty_cycle_calc (int freq, float duty_cycle) {
+    ^
+MotorControl.c(14): note: declare 'static' if the function is not intended to be used outside of this translation unit
+int duty_cycle_calc (int freq, float duty_cycle) {
+^
+static 
+MotorControl.c(18): warning: no previous prototype for function 'parseMove' [-Wmissing-prototypes]
+char parseMove(uint8_t data) {
+     ^
+MotorControl.c(18): note: declare 'static' if the function is not intended to be used outside of this translation unit
+char parseMove(uint8_t data) {
+^
+static 
+MotorControl.c(31): warning: non-void function does not return a value in all control paths [-Wreturn-type]
+}
+^
+MotorControl.c(33): warning: no previous prototype for function 'initMotor' [-Wmissing-prototypes]
+void initMotor (void) {
+     ^
+MotorControl.c(33): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void initMotor (void) {
+^
+static 
+MotorControl.c(80): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+        uint32_t pwm = duty_cycle_calc(50, MOTOR_DUTY);
+                 ~~~   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MotorControl.c(79): warning: unused parameter 'val' [-Wunused-parameter]
+void rightMotorMove(int dir, float val) {
+                                   ^
+MotorControl.c(79): warning: no previous prototype for function 'rightMotorMove' [-Wmissing-prototypes]
+void rightMotorMove(int dir, float val) {
+     ^
+MotorControl.c(79): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void rightMotorMove(int dir, float val) {
+^
+static 
+MotorControl.c(94): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+        uint32_t pwm = duty_cycle_calc(MOTOR_FREQ, MOTOR_DUTY);
+                 ~~~   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MotorControl.c(93): warning: unused parameter 'val' [-Wunused-parameter]
+void leftMotorMove(int dir, float val) {
+                                  ^
+MotorControl.c(93): warning: no previous prototype for function 'leftMotorMove' [-Wmissing-prototypes]
+void leftMotorMove(int dir, float val) {
+     ^
+MotorControl.c(93): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void leftMotorMove(int dir, float val) {
+^
+static 
+MotorControl.c(107): warning: no previous prototype for function 'forward' [-Wmissing-prototypes]
+void forward(void) {
+     ^
+MotorControl.c(107): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void forward(void) {
+^
+static 
+MotorControl.c(112): warning: no previous prototype for function 'backward' [-Wmissing-prototypes]
+void backward(void) {
+     ^
+MotorControl.c(112): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void backward(void) {
+^
+static 
+MotorControl.c(117): warning: no previous prototype for function 'left' [-Wmissing-prototypes]
+void left(void) {
+     ^
+MotorControl.c(117): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void left(void) {
+^
+static 
+MotorControl.c(122): warning: no previous prototype for function 'right' [-Wmissing-prototypes]
+void right(void) {
+     ^
+MotorControl.c(122): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void right(void) {
+^
+static 
+MotorControl.c(127): warning: no previous prototype for function 'stop' [-Wmissing-prototypes]
+void stop(void) {
+     ^
+MotorControl.c(127): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void stop(void) {
+^
+static 
+MotorControl.c(132): warning: no previous prototype for function 'rightForward' [-Wmissing-prototypes]
+void rightForward(void) {
+     ^
+MotorControl.c(132): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void rightForward(void) {
+^
+static 
+MotorControl.c(137): warning: no previous prototype for function 'rightBackwark' [-Wmissing-prototypes]
+void rightBackwark(void) {
+     ^
+MotorControl.c(137): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void rightBackwark(void) {
+^
+static 
+MotorControl.c(142): warning: no previous prototype for function 'leftForward' [-Wmissing-prototypes]
+void leftForward(void) {
+     ^
+MotorControl.c(142): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void leftForward(void) {
+^
+static 
+MotorControl.c(150): warning: no newline at end of file [-Wnewline-eof]
 }
  ^
-Audio.c(36): warning: no previous prototype for function 'playAudio' [-Wmissing-prototypes]
-void playAudio(int* notes, int size) {
+MotorControl.c(147): warning: no previous prototype for function 'leftBackward' [-Wmissing-prototypes]
+void leftBackward(void) {
      ^
-Audio.c(36): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void playAudio(int* notes, int size) {
+MotorControl.c(147): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void leftBackward(void) {
 ^
 static 
-8 warnings generated.
-compiling Audio.c...
+23 warnings generated.
+compiling MotorControl.c...
+LED.c(67): warning: no newline at end of file [-Wnewline-eof]
+*/
+  ^
+1 warning generated.
+compiling LED.c...
+Serial.c(1): warning: // comments are not allowed in this language [-Wcomment]
+#include "MKL25Z4.h" // Device header
+                     ^
+Serial.c(9): warning: no previous prototype for function 'UART2_Receive_Poll' [-Wmissing-prototypes]
+uint8_t UART2_Receive_Poll(void) {
+        ^
+Serial.c(9): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint8_t UART2_Receive_Poll(void) {
+^
+static 
+Serial.c(14): warning: no previous prototype for function 'initUART2' [-Wmissing-prototypes]
+void initUART2 (uint32_t baud_rate) { 
+     ^
+Serial.c(14): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void initUART2 (uint32_t baud_rate) { 
+^
+static 
+Serial.c(46): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+Serial.c(41): warning: no previous prototype for function 'serial' [-Wmissing-prototypes]
+uint8_t serial(void) {
+        ^
+Serial.c(41): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint8_t serial(void) {
+^
+static 
+5 warnings generated.
+compiling Serial.c...
 RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
@@ -296,8 +334,8 @@ RTE/CMSIS/RTX_Config.c(31): warning: // comments are not allowed in this languag
 3 warnings generated.
 compiling RTX_Config.c...
 linking...
-Program Size: Code=6928 RO-data=496 RW-data=168 ZI-data=5216  
-".\Objects\myRTX.axf" - 0 Error(s), 59 Warning(s).
+Program Size: Code=7200 RO-data=496 RW-data=168 ZI-data=5216  
+".\Objects\myRTX.axf" - 0 Error(s), 62 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -332,26 +370,26 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.3.0
 
    * Component: ARM::CMSIS:RTOS2:Keil RTX5:Library:5.5.1
-      Source file:   CMSIS/RTOS2/RTX/Config/RTX_Config.c
+      Source file:   CMSIS/RTOS2/RTX/Source/rtx_lib.c
       Source file:   CMSIS/RTOS2/RTX/Template/Events.c
-      Source file:   CMSIS/RTOS2/RTX/Template/main.c
+      Library file:  CMSIS/RTOS2/RTX/Library/ARM/RTX_CM0.lib
+      Source file:   CMSIS/RTOS2/RTX/Template/MsgQueue.c
       Source file:   CMSIS/RTOS2/RTX/Template/Mutex.c
       Source file:   CMSIS/RTOS2/RTX/Template/Timer.c
-      Source file:   CMSIS/RTOS2/RTX/Source/rtx_lib.c
-      Source file:   CMSIS/RTOS2/RTX/Template/Semaphore.c
-      Library file:  CMSIS/RTOS2/RTX/Library/ARM/RTX_CM0.lib
-      Include file:  CMSIS/RTOS2/RTX/Config/RTX_Config.h
-      Include file:  CMSIS/RTOS2/RTX/Include/rtx_os.h
       Source file:   CMSIS/RTOS2/RTX/Template/MemPool.c
+      Source file:   CMSIS/RTOS2/RTX/Template/Semaphore.c
       Source file:   CMSIS/RTOS2/RTX/Template/Thread.c
+      Include file:  CMSIS/RTOS2/RTX/Include/rtx_os.h
+      Include file:  CMSIS/RTOS2/RTX/Config/RTX_Config.h
       Source file:   CMSIS/RTOS2/RTX/Template/svc_user.c
-      Source file:   CMSIS/RTOS2/RTX/Template/MsgQueue.c
+      Source file:   CMSIS/RTOS2/RTX/Config/RTX_Config.c
+      Source file:   CMSIS/RTOS2/RTX/Template/main.c
 
    * Component: Keil::Device:Startup:2.5.0
-      Source file:   Device/Source/ARM/startup_MKL25Z4.s
       Source file:   Device/Source/system_MKL25Z4.c
+      Source file:   Device/Source/ARM/startup_MKL25Z4.s
       Include file:  Device/Source/system_MKL25Z4.h
-Build Time Elapsed:  00:00:09
+Build Time Elapsed:  00:00:11
 </pre>
 </body>
 </html>
