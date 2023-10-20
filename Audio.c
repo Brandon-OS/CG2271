@@ -5,8 +5,41 @@
 
 #define PTE30_Pin 30
 
-int end_song[] = {
+int freq_calc(int freq) {
+	return ((48000000 / 128) / freq) - 1;  // assume 48 MHz and 128 prescaler (PS)
+}
 
+int duty_cycle_calc (int freq, float duty_cycle) {
+	return (((48000000 / 128) / freq) - 1) * duty_cycle;
+}
+
+int run_song[] = {
+	NOTE_AS4,8, NOTE_AS4,8, NOTE_AS4,8,//1
+  NOTE_F5,2, NOTE_C6,2,
+  NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F6,2, NOTE_C6,4,  
+  NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F6,2, NOTE_C6,4,  
+  NOTE_AS5,8, NOTE_A5,8, NOTE_AS5,8, NOTE_G5,2, NOTE_C5,8, NOTE_C5,8, NOTE_C5,8,
+  NOTE_F5,2, NOTE_C6,2,
+  NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F6,2, NOTE_C6,4,  
+  
+  NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F6,2, NOTE_C6,4, //8  
+  NOTE_AS5,8, NOTE_A5,8, NOTE_AS5,8, NOTE_G5,2, NOTE_C5,-8, NOTE_C5,16, 
+  NOTE_D5,-4, NOTE_D5,8, NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F5,8,
+  NOTE_F5,8, NOTE_G5,8, NOTE_A5,8, NOTE_G5,4, NOTE_D5,8, NOTE_E5,4,NOTE_C5,-8, NOTE_C5,16,
+  NOTE_D5,-4, NOTE_D5,8, NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F5,8,
+  
+  NOTE_C6,-8, NOTE_G5,16, NOTE_G5,2, REST,8, NOTE_C5,8,//13
+  NOTE_D5,-4, NOTE_D5,8, NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F5,8,
+  NOTE_F5,8, NOTE_G5,8, NOTE_A5,8, NOTE_G5,4, NOTE_D5,8, NOTE_E5,4,NOTE_C6,-8, NOTE_C6,16,
+  NOTE_F6,4, NOTE_DS6,8, NOTE_CS6,4, NOTE_C6,8, NOTE_AS5,4, NOTE_GS5,8, NOTE_G5,4, NOTE_F5,8,
+  NOTE_C6,1
+};
+
+int end_song[] = {
+  NOTE_E5, 8, NOTE_D5, 8, NOTE_FS4, 4, NOTE_GS4, 4, 
+  NOTE_CS5, 8, NOTE_B4, 8, NOTE_D4, 4, NOTE_E4, 4, 
+  NOTE_B4, 8, NOTE_A4, 8, NOTE_CS4, 4, NOTE_E4, 4,
+  NOTE_A4, 2
 };
 
 void initAudio(void) {
@@ -27,12 +60,15 @@ void initAudio(void) {
 	TPM0_C3SC |= (TPM_CnSC_ELSB (1) | TPM_CnSC_MSB (1));
 }
 
-void playEndAudio(int* notes, int size) {
+void playEndAudio() {
+	int size = 13;
 	for (int i = 0; i < size; ++i) {
-		if (notes[i] != 0) {
-			int freq = freq_calc(notes[i]);
-			TPM2->MOD = freq;
-			TPM2_C0V = duty_cycle_calc(freq, (float) 0.5);	
+		if (end_song[2*i] != 0) {
+			for (int j = 0; j < 16/end_song[2*i+1]; j++) {
+				int freq = freq_calc(end_song[2*i]);
+				TPM0->MOD = freq;
+				TPM0_C0V = duty_cycle_calc(freq, (float) 0.5);	
+			}
 		}
 	}
 }

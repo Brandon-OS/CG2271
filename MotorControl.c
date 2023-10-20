@@ -7,14 +7,6 @@
 #define MOTOR_FREQ 500
 #define MOTOR_DUTY 1
 
-int freq_calc(int freq) {
-	return ((48000000 / 128) / freq) - 1;  // assume 48 MHz and 128 prescaler (PS)
-}
-
-int duty_cycle_calc (int freq, float duty_cycle) {
-	return (((48000000 / 128) / freq) - 1) * duty_cycle;
-}
-
 int pwm_cal(float duty_cycle) {
 	return 6000*(duty_cycle/100);
 }

@@ -93,9 +93,13 @@
 #define NOTE_DS8 4978
 #define REST      0
 
+
+int freq_calc(int freq);
+int duty_cycle_calc(int freq, float duty);
+
 // Function prototypes
 void initAudio(void);
-void playEndAudio(int*, int);
+void playEndAudio();
 void stopSound(void);
 
 #endif
