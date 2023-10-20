@@ -2,6 +2,8 @@
 
 #define PTB0_Pin 0
 #define PTB1_Pin 1
+#define PTB2_Pin 2
+#define PTB3_Pin 3
 #define MOTOR_FREQ 500
 #define MOTOR_DUTY 1
 
@@ -36,6 +38,12 @@ void initMotor (void) {
 
 	PORTB->PCR[PTB1_Pin] &= ~PORT_PCR_MUX_MASK; 
 	PORTB->PCR[PTB1_Pin] |= PORT_PCR_MUX (3);
+
+	PORTB->PCR[PTB2_Pin] &= ~PORT_PCR_MUX_MASK;
+	PORTB->PCR[PTB2_Pin] |= PORT_PCR_MUX (3);
+
+	PORTB->PCR[PTB3_Pin] &= ~PORT_PCR_MUX_MASK; 
+	PORTB->PCR[PTB3_Pin] |= PORT_PCR_MUX (3);
 
 	SIM_SCGC6 |= SIM_SCGC6_TPM1_MASK;
 	SIM->SOPT2 &= ~SIM_SOPT2_TPMSRC_MASK;
