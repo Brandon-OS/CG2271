@@ -16,7 +16,7 @@ int duty_cycle_calc (int freq, float duty_cycle) {
 }
 
 int pwm_cal(float duty_cycle) {
-	return 6000*(duty_cycle/1000);
+	return 6000*(duty_cycle/100);
 }
 char parseMove(uint8_t data) {
 	switch (data) {

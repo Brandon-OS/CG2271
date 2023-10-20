@@ -1,32 +1,47 @@
 #include "MKL25Z4.h" 
 #define MASK(x) (1 << (x))
-/*
+
 typedef struct node {
 	int portNumber;
 	PORT_Type* port;
+	GPIO_Type* gpio;
 } led_node;
 
 typedef enum state {
 	ON, OFF
 } states;
 
-void initLED(int portNumber, PORT_Type* port) {
+GPIO_Type* translate(PORT_Type* port) {
+	if (port == PORTA) return GPIOA;
+	if (port == PORTB) return GPIOB;
+	if (port == PORTC) return GPIOC;
+	if (port == PORTD) return GPIOD;
+	if (port == PORTE) return GPIOE;
+}
+
+
+led_node initLED(int portNumber, PORT_Type* port) {
+	SIM->SCGC5 |= ((SIM_SCGC5_PORTA_MASK) | (SIM_SCGC5_PORTC_MASK) | (SIM_SCGC5_PORTD_MASK));
+	GPIO_Type* gpio = translate(port);
 	led_node node;
 	node.portNumber = portNumber;
 	node.port = port;
+	node.gpio = gpio;
 	
 	node.port->PCR[node.portNumber] &= ~PORT_PCR_MUX_MASK;
 	node.port->PCR[node.portNumber] |= PORT_PCR_MUX(1);
-	PTB->PDDR |= (MASK(node.portNumber));
+	node.gpio->PDDR |= (MASK(node.portNumber));
+	
+	return node;
 }
 
 void setLEDOutput(led_node node, states state) {
 	switch (state) {
 		case ON:
-			PTB->PDOR &= ~MASK(node.portNumber);
+			node.gpio->PDOR |= MASK(node.portNumber);
 			break;
 		case OFF:
-			PTB->PDOR |= MASK(node.portNumber);
+			node.gpio->PDOR &= ~MASK(node.portNumber);
 	}
 }
 
@@ -57,6 +72,18 @@ void runningLED(void) {
 				setLEDOutput(nodes[i-1], OFF);
 				if (i == 9) {
 					left = 0;
+					right = 1;
+					break;
+				}
+			}
+		}
+		
+		if (right == 1) {
+			for (int i = 9; i >= 0; i--) {
+				setLEDOutput(nodes[i], ON);
+				setLEDOutput(nodes[i+1], OFF);
+				if (i == 9) {
+					left = 1;
 					right = 0;
 					break;
 				}
@@ -64,4 +91,3 @@ void runningLED(void) {
 		}
 	}
 }
-*/

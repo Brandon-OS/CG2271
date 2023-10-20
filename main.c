@@ -8,6 +8,7 @@
 #include "MKL25Z4.h" 
 #include "MotorControl.h"
 #include "Serial.h"
+#include "LED.h"
  
  /*----------------------------------------------------------------------------
  * Global Definitions
@@ -51,20 +52,21 @@ void audio_thread (void *argument) {
 	
 }
 
+void led_thread (void *argument) {
+	for (;;) {
+		runningLED();
+	}
+}
+
 int main (void) {
- 
   // System Initialization
-  SystemCoreClockUpdate();
-	initMotor();
-	/**
+	
   osKernelInitialize();                 // Initialize CMSIS-RTOS
-	osThreadNew(brain_thread, NULL, NULL);
-  osThreadNew(motor_thread, NULL, NULL);    // Create application main thread
+	//osThreadNew(brain_thread, NULL, NULL);
+	osThreadNew(led_thread, NULL, NULL);
+  //osThreadNew(motor_thread, NULL, NULL);    // Create application main thread
 	osKernelStart();                      // Start thread execution
   for (;;) {
 	}
-	*/
-	while(1) {
-		forward();
-	}
+	
 }
