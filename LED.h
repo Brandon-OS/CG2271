@@ -4,4 +4,6 @@
 
 void runningLED(void);
 
+void test(void);
+
 #endif

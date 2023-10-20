@@ -45,8 +45,8 @@ int end_song[] = {
 void initAudio(void) {
 	SIM_SCGC5 |= SIM_SCGC5_PORTE_MASK;
 
-	PORTB->PCR[PTE30_Pin] &= ~PORT_PCR_MUX_MASK;
-	PORTB->PCR[PTE30_Pin] |= PORT_PCR_MUX (3);
+	PORTE->PCR[PTE30_Pin] &= ~PORT_PCR_MUX_MASK;
+	PORTE->PCR[PTE30_Pin] |= PORT_PCR_MUX (3);
 
 	SIM_SCGC6 |= SIM_SCGC6_TPM0_MASK;
 	SIM->SOPT2 &= ~SIM_SOPT2_TPMSRC_MASK;
@@ -67,9 +67,10 @@ void playEndAudio() {
 			for (int j = 0; j < 16/end_song[2*i+1]; j++) {
 				int freq = freq_calc(end_song[2*i]);
 				TPM0->MOD = freq;
-				TPM0_C0V = duty_cycle_calc(freq, (float) 0.5);	
+				TPM0_C3V = duty_cycle_calc(freq, (float) 0.1);	
 			}
 		}
+		osDelay(200);
 	}
 }
 
