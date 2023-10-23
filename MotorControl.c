@@ -122,21 +122,21 @@ void stop(void) {
 }
 
 void rightForward(void) {
-	rightMotorMove(1, 5);
+	rightMotorMove(1, 20);
 	leftMotorMove(1, 100);
 }
 
-void rightBackwark(void) {
-	rightMotorMove(-1, 5);
+void rightBackward(void) {
+	rightMotorMove(-1, 20);
 	leftMotorMove(-1, 100);
 }
 
 void leftForward(void) {
 	rightMotorMove(1, 100);
-	leftMotorMove(1, 5);
+	leftMotorMove(1, 20);
 }
 
 void leftBackward(void) {
 	rightMotorMove(-1, 100);
-	leftMotorMove(-1, 5);
+	leftMotorMove(-1, 20);
 }

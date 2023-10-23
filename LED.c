@@ -1,5 +1,7 @@
 #include "MKL25Z4.h" 
+#include "cmsis_os2.h"
 #define MASK(x) (1 << (x))
+#define NUM_LEDS 10
 
 typedef struct node {
 	int portNumber;
@@ -43,12 +45,7 @@ void setLEDOutput(led_node node, states state) {
 	}
 }
 
-void cycleLED(void) {
-	
-}
-
-
-void runningLED(void) {
+led_node* initFrontLED(void) {
 	led_node node0 = initLED(13, PORTA, PTA);
 	led_node node1 = initLED(5, PORTD, PTD);
 	led_node node2 = initLED(0, PORTD, PTD);
@@ -61,23 +58,58 @@ void runningLED(void) {
 	led_node node9 = initLED(12, PORTC, PTC);
 
 	led_node nodes[10] = {node0, node1, node2, node3, node4, node5, node6, node7, node8, node9};
-		for (int i = 0; i < 10; i++) {
-			setLEDOutput(nodes[i], ON);
-			osDelay(2000);
-			setLEDOutput(nodes[i], OFF);
-			//if (i != 0) setLEDOutput(nodes[i-1], OFF);
-			//osDelay(2000);
-		}
+	return nodes;
+}
+
+void flashLED(void) {
+	led_node* nodes = initFrontLED();
 	
+	setLEDOutput(nodes[0], ON);
+	setLEDOutput(nodes[1], ON);
+	setLEDOutput(nodes[2], ON);
+	setLEDOutput(nodes[3], ON);
+	setLEDOutput(nodes[4], ON);
+	setLEDOutput(nodes[5], ON);
+	setLEDOutput(nodes[6], ON);
+	setLEDOutput(nodes[7], ON);
+	setLEDOutput(nodes[8], ON);
+	setLEDOutput(nodes[9], ON);
 	
-	/**
+	//osDelay(500);
+	delay(2400000);
+	setLEDOutput(nodes[0], OFF);
+	setLEDOutput(nodes[1], OFF);
+	setLEDOutput(nodes[2], OFF);
+	setLEDOutput(nodes[3], OFF);
+	setLEDOutput(nodes[4], OFF);
+	setLEDOutput(nodes[5], OFF);
+	setLEDOutput(nodes[6], OFF);
+	setLEDOutput(nodes[7], OFF);
+	setLEDOutput(nodes[8], OFF);
+	setLEDOutput(nodes[9], OFF);
+	delay(2400000);
+	//osDelay(500);
+}
+
+void lightAllLED(void) {
+	led_node* nodes = initFrontLED();
+	for (int i = 0; i < NUM_LEDS; i++) {
+		setLEDOutput(nodes[i], ON);
+	}
+}
+
+
+void runningLED() {
+	led_node* nodes = initFrontLED();
+		for (int i = 0; i < NUM_LEDS; i++) {
 	int left = 1;
 	int right = 0;
 	for (;;) {
 		if (left == 1) {
-			for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < NUM_LEDS; i++) {
 				setLEDOutput(nodes[i], ON);
-				if (i != 0) setLEDOutput(nodes[i-1], OFF);
+				osDelay(50);
+				setLEDOutput(nodes[i], OFF);
 				if (i == 9) {
 					left = 0;
 					right = 1;
@@ -87,9 +119,10 @@ void runningLED(void) {
 		}
 		
 		if (right == 1) {
-			for (int i = 9; i >= 0; i--) {
+			for (int i = NUM_LEDS-1; i >= 0; i--) {
 				setLEDOutput(nodes[i], ON);
-				if (i!= 9) setLEDOutput(nodes[i+1], OFF);
+				osDelay(50);
+				setLEDOutput(nodes[i], OFF);
 				if (i == 0) {
 					left = 1;
 					right = 0;
@@ -98,5 +131,5 @@ void runningLED(void) {
 			}
 		}
 	}
-	**/
+}
 }

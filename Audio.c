@@ -13,7 +13,7 @@ int duty_cycle_calc (int freq, float duty_cycle) {
 	return (((48000000 / 128) / freq) - 1) * duty_cycle;
 }
 
-int run_song[] = {
+int end_song[] = {
 	NOTE_AS4,8, NOTE_AS4,8, NOTE_AS4,8,//1
   NOTE_F5,2, NOTE_C6,2,
   NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F6,2, NOTE_C6,4,  
@@ -35,7 +35,7 @@ int run_song[] = {
   NOTE_C6,1
 };
 
-int end_song[] = {
+int en_song[] = {
   NOTE_E5, 8, NOTE_D5, 8, NOTE_FS4, 4, NOTE_GS4, 4, 
   NOTE_CS5, 8, NOTE_B4, 8, NOTE_D4, 4, NOTE_E4, 4, 
   NOTE_B4, 8, NOTE_A4, 8, NOTE_CS4, 4, NOTE_E4, 4,

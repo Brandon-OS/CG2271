@@ -22,9 +22,11 @@
  *---------------------------------------------------------------------------*/
 
 void motor_thread (void *argument) {
-  initMotor();
 	for (;;) {
-		forward();
+		rightForward();
+		osDelay(10000);
+		leftBackward();
+		osDelay(10000);
 	}
 	
 	/*
@@ -57,7 +59,8 @@ void audio_thread (void *argument) {
 
 void led_thread (void *argument) {
 	for (;;) {
-		runningLED();
+		//runningLED(50);
+		flashLED();
 	}
 }
 
@@ -66,14 +69,10 @@ int main (void) {
 	SystemCoreClockUpdate();
 	initAudio();
 	initMotor();
-	
-	while(1) {
-		runningLED();
-	}
   osKernelInitialize();                 // Initialize CMSIS-RTOS
 	//osThreadNew(brain_thread, NULL, NULL);
 	//osThreadNew(audio_thread, NULL, NULL);
-	//osThreadNew(led_thread, NULL, NULL);
+	osThreadNew(motor_thread, NULL, NULL);
   //osThreadNew(motor_thread, NULL, NULL);    // Create application main thread
 	osKernelStart();
 /**	// Start thread execution

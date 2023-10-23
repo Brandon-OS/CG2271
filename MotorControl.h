@@ -15,7 +15,7 @@ void left(void);
 void right(void);
 void stop(void);
 void rightForward(void);
-void rightBackwark(void);
+void rightBackward(void);
 void leftForward(void);
 void leftBackward(void);
 
