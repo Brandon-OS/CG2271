@@ -11,6 +11,12 @@ typedef enum state {
 	ON, OFF
 } states;
 
+static void delay(volatile uint32_t nof) {  
+	while(nof!=0) {
+    __asm("NOP");    
+		nof--;
+ }}
+
 
 led_node initLED(int portNumber, PORT_Type* port, GPIO_Type* gpio) {
 	SIM->SCGC5 |= ((SIM_SCGC5_PORTA_MASK) | (SIM_SCGC5_PORTC_MASK) | (SIM_SCGC5_PORTD_MASK));
@@ -32,20 +38,13 @@ void setLEDOutput(led_node node, states state) {
 			node.gpio->PDOR |= MASK(node.portNumber);
 			break;
 		case OFF:
-			node.gpio->PDOR &= ~MASK(node.portNumber);
+			node.gpio->PDOR &= ~(MASK(node.portNumber));
+			break;
 	}
 }
 
 void cycleLED(void) {
 	
-}
-
-void test(void) {
-	SIM->SCGC5 |= ((SIM_SCGC5_PORTA_MASK) | (SIM_SCGC5_PORTC_MASK) | (SIM_SCGC5_PORTD_MASK));
-	PORTA->PCR[13] &= ~PORT_PCR_MUX_MASK;
-	PORTA->PCR[13] |= PORT_PCR_MUX(1);
-	PTA->PDDR |= (MASK(13));
-	PTA->PDOR |= MASK(13);
 }
 
 
@@ -62,6 +61,16 @@ void runningLED(void) {
 	led_node node9 = initLED(12, PORTC, PTC);
 
 	led_node nodes[10] = {node0, node1, node2, node3, node4, node5, node6, node7, node8, node9};
+		for (int i = 0; i < 10; i++) {
+			setLEDOutput(nodes[i], ON);
+			osDelay(2000);
+			setLEDOutput(nodes[i], OFF);
+			//if (i != 0) setLEDOutput(nodes[i-1], OFF);
+			//osDelay(2000);
+		}
+	
+	
+	/**
 	int left = 1;
 	int right = 0;
 	for (;;) {
@@ -89,4 +98,5 @@ void runningLED(void) {
 			}
 		}
 	}
+	**/
 }

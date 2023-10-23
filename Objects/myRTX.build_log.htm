@@ -161,57 +161,6 @@ RTE/CMSIS/RTX_Config.c(31): warning: // comments are not allowed in this languag
 3 warnings generated.
 compiling RTX_Config.c...
 compiling system_MKL25Z4.c...
-Serial.c(1): warning: // comments are not allowed in this language [-Wcomment]
-#include "MKL25Z4.h" // Device header
-                     ^
-Serial.c(9): warning: no previous prototype for function 'UART2_Receive_Poll' [-Wmissing-prototypes]
-uint8_t UART2_Receive_Poll(void) {
-        ^
-Serial.c(9): note: declare 'static' if the function is not intended to be used outside of this translation unit
-uint8_t UART2_Receive_Poll(void) {
-^
-static 
-Serial.c(14): warning: no previous prototype for function 'initUART2' [-Wmissing-prototypes]
-void initUART2 (uint32_t baud_rate) { 
-     ^
-Serial.c(14): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void initUART2 (uint32_t baud_rate) { 
-^
-static 
-Serial.c(46): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-Serial.c(41): warning: no previous prototype for function 'serial' [-Wmissing-prototypes]
-uint8_t serial(void) {
-        ^
-Serial.c(41): note: declare 'static' if the function is not intended to be used outside of this translation unit
-uint8_t serial(void) {
-^
-static 
-5 warnings generated.
-compiling Serial.c...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(27): warning: In file included from...
-./RTE/CMSIS\RTX_Config.h(38): warning: // comments are not allowed in this language [-Wcomment]
-//-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
-^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
-//  ==== Enumerations, structures, defines ====
-^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
-/// Kernel Information
-^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(34): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_evr.h(29): warning: // comments are not allowed in this language [-Wcomment]
-#include "cmsis_os2.h"                  // CMSIS RTOS API
-                                        ^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(37): warning: // comments are not allowed in this language [-Wcomment]
-// System Configuration
-^
-5 warnings generated.
-compiling rtx_lib.c...
 Audio.c(2): warning: In file included from...
 ./MotorControl.h(8): warning: // comments are not allowed in this language [-Wcomment]
 // Function prototypes
@@ -280,6 +229,57 @@ void stop_sound(void) {
 static 
 17 warnings generated.
 compiling Audio.c...
+Serial.c(1): warning: // comments are not allowed in this language [-Wcomment]
+#include "MKL25Z4.h" // Device header
+                     ^
+Serial.c(9): warning: no previous prototype for function 'UART2_Receive_Poll' [-Wmissing-prototypes]
+uint8_t UART2_Receive_Poll(void) {
+        ^
+Serial.c(9): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint8_t UART2_Receive_Poll(void) {
+^
+static 
+Serial.c(14): warning: no previous prototype for function 'initUART2' [-Wmissing-prototypes]
+void initUART2 (uint32_t baud_rate) { 
+     ^
+Serial.c(14): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void initUART2 (uint32_t baud_rate) { 
+^
+static 
+Serial.c(46): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+Serial.c(41): warning: no previous prototype for function 'serial' [-Wmissing-prototypes]
+uint8_t serial(void) {
+        ^
+Serial.c(41): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint8_t serial(void) {
+^
+static 
+5 warnings generated.
+compiling Serial.c...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(27): warning: In file included from...
+./RTE/CMSIS\RTX_Config.h(38): warning: // comments are not allowed in this language [-Wcomment]
+//-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
+/// Kernel Information
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(34): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_evr.h(29): warning: // comments are not allowed in this language [-Wcomment]
+#include "cmsis_os2.h"                  // CMSIS RTOS API
+                                        ^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(37): warning: // comments are not allowed in this language [-Wcomment]
+// System Configuration
+^
+5 warnings generated.
+compiling rtx_lib.c...
 main.c(7): warning: In file included from...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
 //  ==== Enumerations, structures, defines ====
@@ -355,13 +355,16 @@ void led_thread (void *argument) {
 main.c(65): warning: // comments are not allowed in this language [-Wcomment]
   // System Initialization
   ^
+main.c(73): warning: code will never be executed [-Wunreachable-code]
+  osKernelInitialize();                 // Initialize CMSIS-RTOS
+  ^~~~~~~~~~~~~~~~~~
 main.c(17): warning: no previous extern declaration for non-static variable 'rx_data' [-Wmissing-variable-declarations]
  uint8_t rx_data;
          ^
 main.c(17): note: declare 'static' if the variable is not intended to be used outside of this translation unit
  uint8_t rx_data;
  ^
-19 warnings generated.
+20 warnings generated.
 compiling main.c...
 LED.c(17): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
         led_node node;
@@ -380,49 +383,41 @@ LED.c(29): note: declare 'static' if the function is not intended to be used out
 void setLEDOutput(led_node node, states state) {
 ^
 static 
-LED.c(39): warning: no previous prototype for function 'cycleLED' [-Wmissing-prototypes]
+LED.c(40): warning: no previous prototype for function 'cycleLED' [-Wmissing-prototypes]
 void cycleLED(void) {
      ^
-LED.c(39): note: declare 'static' if the function is not intended to be used outside of this translation unit
+LED.c(40): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void cycleLED(void) {
 ^
 static 
-LED.c(43): warning: no previous prototype for function 'test' [-Wmissing-prototypes]
-void test(void) {
-     ^
-LED.c(43): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void test(void) {
-^
-static 
-LED.c(64): warning: initializer for aggregate is not a compile-time constant [-Wc99-extensions]
+LED.c(57): warning: initializer for aggregate is not a compile-time constant [-Wc99-extensions]
         led_node nodes[10] = {node0, node1, node2, node3, node4, node5, node6, node7, node8, node9};
                               ^~~~~
-LED.c(69): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-                        for (int i = 0; i < 10; i++) {
-                             ^
-LED.c(69): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-LED.c(81): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-                        for (int i = 9; i >= 0; i--) {
-                             ^
-LED.c(81): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-LED.c(92): warning: no newline at end of file [-Wnewline-eof]
+LED.c(58): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+                for (int i = 0; i < 10; i++) {
+                     ^
+LED.c(58): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+LED.c(60): warning: implicit declaration of function 'osDelay' [-Wimplicit-function-declaration]
+                        osDelay(2000);
+                        ^
+LED.c(62): warning: // comments are not allowed in this language [-Wcomment]
+                        //if (i != 0) setLEDOutput(nodes[i-1], OFF);
+                        ^
+LED.c(96): warning: no newline at end of file [-Wnewline-eof]
 }
  ^
-LED.c(52): warning: no previous prototype for function 'runningLED' [-Wmissing-prototypes]
+LED.c(45): warning: no previous prototype for function 'runningLED' [-Wmissing-prototypes]
 void runningLED(void) {
      ^
-LED.c(52): note: declare 'static' if the function is not intended to be used outside of this translation unit
+LED.c(45): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void runningLED(void) {
 ^
 static 
-LED.c(52): warning: function 'runningLED' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
-void runningLED(void) {
-                      ^
-13 warnings generated.
+11 warnings generated.
 compiling LED.c...
 linking...
-Program Size: Code=6784 RO-data=496 RW-data=272 ZI-data=5208  
-".\Objects\myRTX.axf" - 0 Error(s), 82 Warning(s).
+Program Size: Code=2804 RO-data=496 RW-data=168 ZI-data=5200  
+".\Objects\myRTX.axf" - 0 Error(s), 81 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -457,26 +452,26 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.3.0
 
    * Component: ARM::CMSIS:RTOS2:Keil RTX5:Library:5.5.1
-      Source file:   CMSIS/RTOS2/RTX/Source/rtx_lib.c
-      Source file:   CMSIS/RTOS2/RTX/Template/Events.c
-      Library file:  CMSIS/RTOS2/RTX/Library/ARM/RTX_CM0.lib
-      Source file:   CMSIS/RTOS2/RTX/Template/MsgQueue.c
-      Source file:   CMSIS/RTOS2/RTX/Template/Mutex.c
-      Source file:   CMSIS/RTOS2/RTX/Template/Timer.c
-      Source file:   CMSIS/RTOS2/RTX/Template/MemPool.c
-      Source file:   CMSIS/RTOS2/RTX/Template/Semaphore.c
-      Source file:   CMSIS/RTOS2/RTX/Template/Thread.c
       Include file:  CMSIS/RTOS2/RTX/Include/rtx_os.h
-      Include file:  CMSIS/RTOS2/RTX/Config/RTX_Config.h
+      Source file:   CMSIS/RTOS2/RTX/Template/MsgQueue.c
       Source file:   CMSIS/RTOS2/RTX/Template/svc_user.c
-      Source file:   CMSIS/RTOS2/RTX/Config/RTX_Config.c
+      Source file:   CMSIS/RTOS2/RTX/Template/Timer.c
+      Source file:   CMSIS/RTOS2/RTX/Template/Thread.c
+      Library file:  CMSIS/RTOS2/RTX/Library/ARM/RTX_CM0.lib
       Source file:   CMSIS/RTOS2/RTX/Template/main.c
+      Include file:  CMSIS/RTOS2/RTX/Config/RTX_Config.h
+      Source file:   CMSIS/RTOS2/RTX/Template/MemPool.c
+      Source file:   CMSIS/RTOS2/RTX/Source/rtx_lib.c
+      Source file:   CMSIS/RTOS2/RTX/Config/RTX_Config.c
+      Source file:   CMSIS/RTOS2/RTX/Template/Events.c
+      Source file:   CMSIS/RTOS2/RTX/Template/Mutex.c
+      Source file:   CMSIS/RTOS2/RTX/Template/Semaphore.c
 
    * Component: Keil::Device:Startup:2.5.0
-      Source file:   Device/Source/system_MKL25Z4.c
       Source file:   Device/Source/ARM/startup_MKL25Z4.s
       Include file:  Device/Source/system_MKL25Z4.h
-Build Time Elapsed:  00:00:10
+      Source file:   Device/Source/system_MKL25Z4.c
+Build Time Elapsed:  00:00:09
 </pre>
 </body>
 </html>

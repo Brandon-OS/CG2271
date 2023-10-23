@@ -57,7 +57,7 @@ void audio_thread (void *argument) {
 
 void led_thread (void *argument) {
 	for (;;) {
-		test();
+		runningLED();
 	}
 }
 
@@ -65,12 +65,17 @@ int main (void) {
   // System Initialization
 	SystemCoreClockUpdate();
 	initAudio();
+	initMotor();
+	
+	while(1) {
+		runningLED();
+	}
   osKernelInitialize();                 // Initialize CMSIS-RTOS
 	//osThreadNew(brain_thread, NULL, NULL);
+	//osThreadNew(audio_thread, NULL, NULL);
 	//osThreadNew(led_thread, NULL, NULL);
-	osThreadNew(audio_thread, NULL, NULL);
   //osThreadNew(motor_thread, NULL, NULL);    // Create application main thread
-	osKernelStart();  
+	osKernelStart();
 /**	// Start thread execution
   for (;;) {
 		playEndAudio();

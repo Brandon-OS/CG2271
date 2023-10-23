@@ -61,7 +61,7 @@ void initAudio(void) {
 }
 
 void playEndAudio() {
-	int size = 13;
+	int size = 13; //88;
 	for (int i = 0; i < size; ++i) {
 		if (end_song[2*i] != 0) {
 			for (int j = 0; j < 16/end_song[2*i+1]; j++) {
