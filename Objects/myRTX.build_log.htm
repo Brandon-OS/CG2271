@@ -27,6 +27,246 @@ Project File Date:  10/20/2023
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
+RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
+/// Kernel Information
+^
+RTE/CMSIS/RTX_Config.c(31): warning: // comments are not allowed in this language [-Wcomment]
+// OS Idle Thread
+^
+3 warnings generated.
+compiling RTX_Config.c...
+assembling startup_MKL25Z4.s...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(27): warning: In file included from...
+./RTE/CMSIS\RTX_Config.h(38): warning: // comments are not allowed in this language [-Wcomment]
+//-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
+/// Kernel Information
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(34): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_evr.h(29): warning: // comments are not allowed in this language [-Wcomment]
+#include "cmsis_os2.h"                  // CMSIS RTOS API
+                                        ^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(37): warning: // comments are not allowed in this language [-Wcomment]
+// System Configuration
+^
+5 warnings generated.
+compiling rtx_lib.c...
+main.c(7): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+main.c(9): warning: In file included from...
+./MotorControl.h(8): warning: // comments are not allowed in this language [-Wcomment]
+// Function prototypes
+^
+main.c(10): warning: In file included from...
+./Serial.h(6): warning: // comments are not allowed in this language [-Wcomment]
+// Function prototypes
+^
+main.c(11): warning: In file included from...
+./Audio.h(100): warning: // comments are not allowed in this language [-Wcomment]
+// Function prototypes
+^
+./Audio.h(102): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void playEndAudio();
+                 ^
+                  void
+main.c(12): warning: In file included from...
+./LED.h(12): warning: designated initializers are a C99 feature [-Wc99-designator]
+        .stack_mem  = &runningled_stk[0],
+        ^
+./LED.h(11): warning: no previous extern declaration for non-static variable 'runningled_attr' [-Wmissing-variable-declarations]
+const osThreadAttr_t runningled_attr = {
+                     ^
+./LED.h(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+const osThreadAttr_t runningled_attr = {
+      ^
+./LED.h(16): warning: designated initializers are a C99 feature [-Wc99-designator]
+        .stack_mem  = &flashled_stk1[0],
+        ^
+./LED.h(15): warning: no previous extern declaration for non-static variable 'flashled_attr1' [-Wmissing-variable-declarations]
+const osThreadAttr_t flashled_attr1 = {
+                     ^
+./LED.h(15): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+const osThreadAttr_t flashled_attr1 = {
+      ^
+./LED.h(20): warning: designated initializers are a C99 feature [-Wc99-designator]
+        .stack_mem  = &flashled_stk2[0],
+        ^
+./LED.h(19): warning: no previous extern declaration for non-static variable 'flashled_attr2' [-Wmissing-variable-declarations]
+const osThreadAttr_t flashled_attr2 = {
+                     ^
+./LED.h(19): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+const osThreadAttr_t flashled_attr2 = {
+      ^
+./LED.h(24): warning: designated initializers are a C99 feature [-Wc99-designator]
+        .stack_mem  = &allled_stk[0],
+        ^
+./LED.h(23): warning: no previous extern declaration for non-static variable 'allled_attr' [-Wmissing-variable-declarations]
+const osThreadAttr_t allled_attr = {
+                     ^
+./LED.h(23): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+const osThreadAttr_t allled_attr = {
+      ^
+./LED.h(35): warning: no previous prototype for function 'runningLedThread' [-Wmissing-prototypes]
+osThreadId_t runningLedThread(void) {
+             ^
+./LED.h(35): note: declare 'static' if the function is not intended to be used outside of this translation unit
+osThreadId_t runningLedThread(void) {
+^
+static 
+./LED.h(38): warning: no previous prototype for function 'flashLedStationaryThread' [-Wmissing-prototypes]
+osThreadId_t flashLedStationaryThread(void) {
+             ^
+./LED.h(38): note: declare 'static' if the function is not intended to be used outside of this translation unit
+osThreadId_t flashLedStationaryThread(void) {
+^
+static 
+./LED.h(41): warning: no previous prototype for function 'flashLedMovingThread' [-Wmissing-prototypes]
+osThreadId_t flashLedMovingThread(void) {
+             ^
+./LED.h(41): note: declare 'static' if the function is not intended to be used outside of this translation unit
+osThreadId_t flashLedMovingThread(void) {
+^
+static 
+./LED.h(44): warning: no previous prototype for function 'lightAllLedThread' [-Wmissing-prototypes]
+osThreadId_t lightAllLedThread(void) {
+             ^
+./LED.h(44): note: declare 'static' if the function is not intended to be used outside of this translation unit
+osThreadId_t lightAllLedThread(void) {
+^
+static 
+main.c(24): warning: unused parameter 'argument' [-Wunused-parameter]
+void motor_thread (void *argument) {
+                         ^
+main.c(24): warning: no previous prototype for function 'motor_thread' [-Wmissing-prototypes]
+void motor_thread (void *argument) {
+     ^
+main.c(24): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void motor_thread (void *argument) {
+^
+static 
+main.c(24): warning: function 'motor_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+void motor_thread (void *argument) {
+                                   ^
+main.c(47): warning: unused parameter 'argument' [-Wunused-parameter]
+void brain_thread (void *argument) {
+                         ^
+main.c(47): warning: no previous prototype for function 'brain_thread' [-Wmissing-prototypes]
+void brain_thread (void *argument) {
+     ^
+main.c(47): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void brain_thread (void *argument) {
+^
+static 
+main.c(47): warning: function 'brain_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+void brain_thread (void *argument) {
+                                   ^
+main.c(53): warning: unused parameter 'argument' [-Wunused-parameter]
+void audio_thread (void *argument) {
+                         ^
+main.c(53): warning: no previous prototype for function 'audio_thread' [-Wmissing-prototypes]
+void audio_thread (void *argument) {
+     ^
+main.c(53): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void audio_thread (void *argument) {
+^
+static 
+main.c(53): warning: function 'audio_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+void audio_thread (void *argument) {
+                                   ^
+main.c(60): warning: // comments are not allowed in this language [-Wcomment]
+  // System Initialization
+  ^
+main.c(17): warning: no previous extern declaration for non-static variable 'rx_data' [-Wmissing-variable-declarations]
+ uint8_t rx_data;
+         ^
+main.c(17): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+ uint8_t rx_data;
+ ^
+28 warnings generated.
+compiling main.c...
+Audio.c(2): warning: In file included from...
+./MotorControl.h(8): warning: // comments are not allowed in this language [-Wcomment]
+// Function prototypes
+^
+Audio.c(3): warning: In file included from...
+./Audio.h(100): warning: // comments are not allowed in this language [-Wcomment]
+// Function prototypes
+^
+./Audio.h(102): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void playEndAudio();
+                 ^
+                  void
+Audio.c(4): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+Audio.c(9): warning: // comments are not allowed in this language [-Wcomment]
+        return ((48000000 / 128) / freq) - 1;  // assume 48 MHz and 128 prescaler (PS)
+                                               ^
+Audio.c(13): warning: implicit conversion turns floating-point number into integer: 'float' to 'int' [-Wfloat-conversion]
+        return (((48000000 / 128) / freq) - 1) * duty_cycle;
+        ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+Audio.c(16): warning: no previous extern declaration for non-static variable 'end_song' [-Wmissing-variable-declarations]
+int end_song[] = {
+    ^
+Audio.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int end_song[] = {
+^
+Audio.c(38): warning: no previous extern declaration for non-static variable 'en_song' [-Wmissing-variable-declarations]
+int en_song[] = {
+    ^
+Audio.c(38): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int en_song[] = {
+^
+Audio.c(63): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void playEndAudio() {
+                 ^
+                  void
+Audio.c(65): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for (int i = 0; i < size; ++i) {
+             ^
+Audio.c(65): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+Audio.c(67): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+                        for (int j = 0; j < 16/end_song[2*i+1]; j++) {
+                             ^
+Audio.c(67): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+Audio.c(69): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                                TPM0->MOD = freq;
+                                          ~ ^~~~
+Audio.c(70): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                                TPM0_C3V = duty_cycle_calc(freq, (float) 0.1);  
+                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Audio.c(63): warning: no previous prototype for function 'playEndAudio' [-Wmissing-prototypes]
+void playEndAudio() {
+     ^
+./Audio.h(102): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
+void playEndAudio();
+     ^
+                  void
+Audio.c(77): warning: no previous prototype for function 'stop_sound' [-Wmissing-prototypes]
+void stop_sound(void) {
+     ^
+Audio.c(77): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void stop_sound(void) {
+^
+static 
+17 warnings generated.
+compiling Audio.c...
 MotorControl.c(3): warning: // comments are not allowed in this language [-Wcomment]
 #define PTB0_Pin 0 //FRONT RIGHT
                    ^
@@ -145,21 +385,36 @@ void leftBackward(void) {
 static 
 20 warnings generated.
 compiling MotorControl.c...
-assembling startup_MKL25Z4.s...
-RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
-//  ==== Enumerations, structures, defines ====
+compiling system_MKL25Z4.c...
+Serial.c(1): warning: // comments are not allowed in this language [-Wcomment]
+#include "MKL25Z4.h" // Device header
+                     ^
+Serial.c(9): warning: no previous prototype for function 'UART2_Receive_Poll' [-Wmissing-prototypes]
+uint8_t UART2_Receive_Poll(void) {
+        ^
+Serial.c(9): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint8_t UART2_Receive_Poll(void) {
 ^
-RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
-/// Kernel Information
+static 
+Serial.c(14): warning: no previous prototype for function 'initUART2' [-Wmissing-prototypes]
+void initUART2 (uint32_t baud_rate) { 
+     ^
+Serial.c(14): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void initUART2 (uint32_t baud_rate) { 
 ^
-RTE/CMSIS/RTX_Config.c(31): warning: // comments are not allowed in this language [-Wcomment]
-// OS Idle Thread
+static 
+Serial.c(46): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+Serial.c(41): warning: no previous prototype for function 'serial' [-Wmissing-prototypes]
+uint8_t serial(void) {
+        ^
+Serial.c(41): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint8_t serial(void) {
 ^
-3 warnings generated.
-compiling RTX_Config.c...
+static 
+5 warnings generated.
+compiling Serial.c...
 LED.c(2): warning: In file included from...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
 //  ==== Enumerations, structures, defines ====
@@ -194,281 +449,122 @@ LED.c(48): note: declare 'static' if the function is not intended to be used out
 led_node* initFrontLED(void) {
 ^
 static 
-LED.c(78): warning: // comments are not allowed in this language [-Wcomment]
-        //osDelay(500);
-        ^
-LED.c(64): warning: no previous prototype for function 'flashLED' [-Wmissing-prototypes]
-void flashLED(void) {
-     ^
+LED.c(64): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+led_node* initBackLED() {
+                     ^
+                      void
+LED.c(76): warning: initializer for aggregate is not a compile-time constant [-Wc99-extensions]
+        led_node nodes[10] = {node0, node1, node2, node3, node4, node5, node6, node7, node8, node9};
+                              ^~~~~
+LED.c(77): warning: address of stack memory associated with local variable 'nodes' returned [-Wreturn-stack-address]
+        return nodes;
+               ^~~~~
+LED.c(64): warning: no previous prototype for function 'initBackLED' [-Wmissing-prototypes]
+led_node* initBackLED() {
+          ^
 LED.c(64): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void flashLED(void) {
+led_node* initBackLED() {
 ^
 static 
-LED.c(96): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+LED.c(83): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
         for (int i = 0; i < NUM_LEDS; i++) {
              ^
-LED.c(96): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-LED.c(94): warning: no previous prototype for function 'lightAllLED' [-Wmissing-prototypes]
-void lightAllLED(void) {
+LED.c(83): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+LED.c(81): warning: no previous prototype for function 'offAllLED' [-Wmissing-prototypes]
+void offAllLED(void) {
      ^
-LED.c(94): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void lightAllLED(void) {
+LED.c(81): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void offAllLED(void) {
 ^
 static 
-LED.c(102): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void runningLED() {
-               ^
-                void
-LED.c(104): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-                for (int i = 0; i < NUM_LEDS; i++) {
-                     ^
-LED.c(104): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-LED.c(109): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-                        for (int i = 0; i < NUM_LEDS; i++) {
-                             ^
-LED.c(109): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-LED.c(109): warning: declaration shadows a local variable [-Wshadow]
-                        for (int i = 0; i < NUM_LEDS; i++) {
-                                 ^
-LED.c(104): note: previous declaration is here
-                for (int i = 0; i < NUM_LEDS; i++) {
-                         ^
-LED.c(122): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-                        for (int i = NUM_LEDS-1; i >= 0; i--) {
-                             ^
-LED.c(122): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-LED.c(122): warning: declaration shadows a local variable [-Wshadow]
-                        for (int i = NUM_LEDS-1; i >= 0; i--) {
-                                 ^
-LED.c(104): note: previous declaration is here
-                for (int i = 0; i < NUM_LEDS; i++) {
-                         ^
-LED.c(135): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-LED.c(102): warning: no previous prototype for function 'runningLED' [-Wmissing-prototypes]
-void runningLED() {
+LED.c(88): warning: unused parameter 'argument' [-Wunused-parameter]
+void flashLEDFast(void *argument) {
+                        ^
+LED.c(88): warning: no previous prototype for function 'flashLEDFast' [-Wmissing-prototypes]
+void flashLEDFast(void *argument) {
      ^
-LED.c(102): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void runningLED() {
+LED.c(88): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void flashLEDFast(void *argument) {
 ^
 static 
-LED.c(104): warning: loop will run at most once (loop increment never executed) [-Wunreachable-code-loop-increment]
-                for (int i = 0; i < NUM_LEDS; i++) {
-                                              ^~~
-24 warnings generated.
-compiling LED.c...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(27): warning: In file included from...
-./RTE/CMSIS\RTX_Config.h(38): warning: // comments are not allowed in this language [-Wcomment]
-//-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
-^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
-//  ==== Enumerations, structures, defines ====
-^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
-/// Kernel Information
-^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(34): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_evr.h(29): warning: // comments are not allowed in this language [-Wcomment]
-#include "cmsis_os2.h"                  // CMSIS RTOS API
-                                        ^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(37): warning: // comments are not allowed in this language [-Wcomment]
-// System Configuration
-^
-5 warnings generated.
-compiling rtx_lib.c...
-Serial.c(1): warning: // comments are not allowed in this language [-Wcomment]
-#include "MKL25Z4.h" // Device header
-                     ^
-Serial.c(9): warning: no previous prototype for function 'UART2_Receive_Poll' [-Wmissing-prototypes]
-uint8_t UART2_Receive_Poll(void) {
-        ^
-Serial.c(9): note: declare 'static' if the function is not intended to be used outside of this translation unit
-uint8_t UART2_Receive_Poll(void) {
-^
-static 
-Serial.c(14): warning: no previous prototype for function 'initUART2' [-Wmissing-prototypes]
-void initUART2 (uint32_t baud_rate) { 
+LED.c(88): warning: function 'flashLEDFast' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+void flashLEDFast(void *argument) {
+                                  ^
+LED.c(120): warning: unused parameter 'argument' [-Wunused-parameter]
+void flashLEDSlow(void *argument) {
+                        ^
+LED.c(120): warning: no previous prototype for function 'flashLEDSlow' [-Wmissing-prototypes]
+void flashLEDSlow(void *argument) {
      ^
-Serial.c(14): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void initUART2 (uint32_t baud_rate) { 
+LED.c(120): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void flashLEDSlow(void *argument) {
 ^
 static 
-Serial.c(46): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-Serial.c(41): warning: no previous prototype for function 'serial' [-Wmissing-prototypes]
-uint8_t serial(void) {
-        ^
-Serial.c(41): note: declare 'static' if the function is not intended to be used outside of this translation unit
-uint8_t serial(void) {
-^
-static 
-5 warnings generated.
-compiling Serial.c...
-main.c(7): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
-//  ==== Enumerations, structures, defines ====
-^
-main.c(9): warning: In file included from...
-./MotorControl.h(8): warning: // comments are not allowed in this language [-Wcomment]
-// Function prototypes
-^
-main.c(10): warning: In file included from...
-./Serial.h(6): warning: // comments are not allowed in this language [-Wcomment]
-// Function prototypes
-^
-main.c(11): warning: In file included from...
-./Audio.h(100): warning: // comments are not allowed in this language [-Wcomment]
-// Function prototypes
-^
-./Audio.h(102): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void playEndAudio();
-                 ^
-                  void
-main.c(12): warning: In file included from...
-./LED.h(5): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void runningLED();
-               ^
-                void
-main.c(24): warning: unused parameter 'argument' [-Wunused-parameter]
-void motor_thread (void *argument) {
-                         ^
-main.c(24): warning: no previous prototype for function 'motor_thread' [-Wmissing-prototypes]
-void motor_thread (void *argument) {
-     ^
-main.c(24): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void motor_thread (void *argument) {
-^
-static 
-main.c(24): warning: function 'motor_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
-void motor_thread (void *argument) {
-                                   ^
-main.c(47): warning: unused parameter 'argument' [-Wunused-parameter]
-void brain_thread (void *argument) {
-                         ^
-main.c(47): warning: no previous prototype for function 'brain_thread' [-Wmissing-prototypes]
-void brain_thread (void *argument) {
-     ^
-main.c(47): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void brain_thread (void *argument) {
-^
-static 
-main.c(47): warning: function 'brain_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
-void brain_thread (void *argument) {
-                                   ^
-main.c(54): warning: unused parameter 'argument' [-Wunused-parameter]
-void audio_thread (void *argument) {
-                         ^
-main.c(54): warning: no previous prototype for function 'audio_thread' [-Wmissing-prototypes]
-void audio_thread (void *argument) {
-     ^
-main.c(54): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void audio_thread (void *argument) {
-^
-static 
-main.c(54): warning: function 'audio_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
-void audio_thread (void *argument) {
-                                   ^
-main.c(62): warning: // comments are not allowed in this language [-Wcomment]
-                //runningLED(50);
-                ^
-main.c(60): warning: unused parameter 'argument' [-Wunused-parameter]
-void led_thread (void *argument) {
-                       ^
-main.c(60): warning: no previous prototype for function 'led_thread' [-Wmissing-prototypes]
-void led_thread (void *argument) {
-     ^
-main.c(60): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void led_thread (void *argument) {
-^
-static 
-main.c(60): warning: function 'led_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
-void led_thread (void *argument) {
-                                 ^
-main.c(17): warning: no previous extern declaration for non-static variable 'rx_data' [-Wmissing-variable-declarations]
- uint8_t rx_data;
-         ^
-main.c(17): note: declare 'static' if the variable is not intended to be used outside of this translation unit
- uint8_t rx_data;
- ^
-20 warnings generated.
-compiling main.c...
-compiling system_MKL25Z4.c...
-Audio.c(2): warning: In file included from...
-./MotorControl.h(8): warning: // comments are not allowed in this language [-Wcomment]
-// Function prototypes
-^
-Audio.c(3): warning: In file included from...
-./Audio.h(100): warning: // comments are not allowed in this language [-Wcomment]
-// Function prototypes
-^
-./Audio.h(102): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void playEndAudio();
-                 ^
-                  void
-Audio.c(4): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
-//  ==== Enumerations, structures, defines ====
-^
-Audio.c(9): warning: // comments are not allowed in this language [-Wcomment]
-        return ((48000000 / 128) / freq) - 1;  // assume 48 MHz and 128 prescaler (PS)
-                                               ^
-Audio.c(13): warning: implicit conversion turns floating-point number into integer: 'float' to 'int' [-Wfloat-conversion]
-        return (((48000000 / 128) / freq) - 1) * duty_cycle;
-        ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-Audio.c(16): warning: no previous extern declaration for non-static variable 'end_song' [-Wmissing-variable-declarations]
-int end_song[] = {
-    ^
-Audio.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-int end_song[] = {
-^
-Audio.c(38): warning: no previous extern declaration for non-static variable 'en_song' [-Wmissing-variable-declarations]
-int en_song[] = {
-    ^
-Audio.c(38): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-int en_song[] = {
-^
-Audio.c(63): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void playEndAudio() {
-                 ^
-                  void
-Audio.c(65): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-        for (int i = 0; i < size; ++i) {
+LED.c(120): warning: function 'flashLEDSlow' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+void flashLEDSlow(void *argument) {
+                                  ^
+LED.c(154): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for (int i = 0; i < NUM_LEDS; i++) {
              ^
-Audio.c(65): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-Audio.c(67): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-                        for (int j = 0; j < 16/end_song[2*i+1]; j++) {
-                             ^
-Audio.c(67): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-Audio.c(69): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-                                TPM0->MOD = freq;
-                                          ~ ^~~~
-Audio.c(70): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-                                TPM0_C3V = duty_cycle_calc(freq, (float) 0.1);  
-                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Audio.c(63): warning: no previous prototype for function 'playEndAudio' [-Wmissing-prototypes]
-void playEndAudio() {
+LED.c(154): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+LED.c(152): warning: unused parameter 'argument' [-Wunused-parameter]
+void lightAllLED(void *argument) {
+                       ^
+LED.c(152): warning: no previous prototype for function 'lightAllLED' [-Wmissing-prototypes]
+void lightAllLED(void *argument) {
      ^
-./Audio.h(102): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
-void playEndAudio();
-     ^
-                  void
-Audio.c(77): warning: no previous prototype for function 'stop_sound' [-Wmissing-prototypes]
-void stop_sound(void) {
-     ^
-Audio.c(77): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void stop_sound(void) {
+LED.c(152): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void lightAllLED(void *argument) {
 ^
 static 
-17 warnings generated.
-compiling Audio.c...
+LED.c(164): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for (int i = 0; i < NUM_LEDS; i++) {
+             ^
+LED.c(164): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+LED.c(169): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+                        for (int i = 0; i < NUM_LEDS; i++) {
+                             ^
+LED.c(169): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+LED.c(169): warning: declaration shadows a local variable [-Wshadow]
+                        for (int i = 0; i < NUM_LEDS; i++) {
+                                 ^
+LED.c(164): note: previous declaration is here
+        for (int i = 0; i < NUM_LEDS; i++) {
+                 ^
+LED.c(182): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+                        for (int i = NUM_LEDS-1; i >= 0; i--) {
+                             ^
+LED.c(182): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+LED.c(182): warning: declaration shadows a local variable [-Wshadow]
+                        for (int i = NUM_LEDS-1; i >= 0; i--) {
+                                 ^
+LED.c(164): note: previous declaration is here
+        for (int i = 0; i < NUM_LEDS; i++) {
+                 ^
+LED.c(195): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+LED.c(161): warning: unused parameter 'argument' [-Wunused-parameter]
+void runningLED(void *argument) {
+                      ^
+LED.c(161): warning: no previous prototype for function 'runningLED' [-Wmissing-prototypes]
+void runningLED(void *argument) {
+     ^
+LED.c(161): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void runningLED(void *argument) {
+^
+static 
+LED.c(164): warning: loop will run at most once (loop increment never executed) [-Wunreachable-code-loop-increment]
+        for (int i = 0; i < NUM_LEDS; i++) {
+                                      ^~~
+LED.c(16): warning: unused function 'delay' [-Wunused-function]
+static void delay(volatile uint32_t nof) {  
+            ^
+37 warnings generated.
+compiling LED.c...
 linking...
-Program Size: Code=7148 RO-data=496 RW-data=168 ZI-data=5208  
-".\Objects\myRTX.axf" - 0 Error(s), 94 Warning(s).
+Program Size: Code=6776 RO-data=532 RW-data=168 ZI-data=5720  
+".\Objects\myRTX.axf" - 0 Error(s), 115 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -503,26 +599,26 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.3.0
 
    * Component: ARM::CMSIS:RTOS2:Keil RTX5:Library:5.5.1
-      Include file:  CMSIS/RTOS2/RTX/Include/rtx_os.h
+      Source file:   CMSIS/RTOS2/RTX/Source/rtx_lib.c
+      Source file:   CMSIS/RTOS2/RTX/Template/Semaphore.c
+      Source file:   CMSIS/RTOS2/RTX/Template/MemPool.c
+      Source file:   CMSIS/RTOS2/RTX/Template/Timer.c
       Source file:   CMSIS/RTOS2/RTX/Template/MsgQueue.c
       Source file:   CMSIS/RTOS2/RTX/Template/svc_user.c
-      Source file:   CMSIS/RTOS2/RTX/Template/Timer.c
-      Source file:   CMSIS/RTOS2/RTX/Template/Thread.c
       Library file:  CMSIS/RTOS2/RTX/Library/ARM/RTX_CM0.lib
-      Source file:   CMSIS/RTOS2/RTX/Template/main.c
-      Include file:  CMSIS/RTOS2/RTX/Config/RTX_Config.h
-      Source file:   CMSIS/RTOS2/RTX/Template/MemPool.c
-      Source file:   CMSIS/RTOS2/RTX/Source/rtx_lib.c
-      Source file:   CMSIS/RTOS2/RTX/Config/RTX_Config.c
-      Source file:   CMSIS/RTOS2/RTX/Template/Events.c
       Source file:   CMSIS/RTOS2/RTX/Template/Mutex.c
-      Source file:   CMSIS/RTOS2/RTX/Template/Semaphore.c
+      Source file:   CMSIS/RTOS2/RTX/Template/Thread.c
+      Source file:   CMSIS/RTOS2/RTX/Config/RTX_Config.c
+      Include file:  CMSIS/RTOS2/RTX/Config/RTX_Config.h
+      Source file:   CMSIS/RTOS2/RTX/Template/main.c
+      Source file:   CMSIS/RTOS2/RTX/Template/Events.c
+      Include file:  CMSIS/RTOS2/RTX/Include/rtx_os.h
 
    * Component: Keil::Device:Startup:2.5.0
-      Source file:   Device/Source/ARM/startup_MKL25Z4.s
       Include file:  Device/Source/system_MKL25Z4.h
+      Source file:   Device/Source/ARM/startup_MKL25Z4.s
       Source file:   Device/Source/system_MKL25Z4.c
-Build Time Elapsed:  00:00:06
+Build Time Elapsed:  00:00:10
 </pre>
 </body>
 </html>

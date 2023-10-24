@@ -61,37 +61,95 @@ led_node* initFrontLED(void) {
 	return nodes;
 }
 
-void flashLED(void) {
-	led_node* nodes = initFrontLED();
-	
-	setLEDOutput(nodes[0], ON);
-	setLEDOutput(nodes[1], ON);
-	setLEDOutput(nodes[2], ON);
-	setLEDOutput(nodes[3], ON);
-	setLEDOutput(nodes[4], ON);
-	setLEDOutput(nodes[5], ON);
-	setLEDOutput(nodes[6], ON);
-	setLEDOutput(nodes[7], ON);
-	setLEDOutput(nodes[8], ON);
-	setLEDOutput(nodes[9], ON);
-	
-	//osDelay(500);
-	delay(2400000);
-	setLEDOutput(nodes[0], OFF);
-	setLEDOutput(nodes[1], OFF);
-	setLEDOutput(nodes[2], OFF);
-	setLEDOutput(nodes[3], OFF);
-	setLEDOutput(nodes[4], OFF);
-	setLEDOutput(nodes[5], OFF);
-	setLEDOutput(nodes[6], OFF);
-	setLEDOutput(nodes[7], OFF);
-	setLEDOutput(nodes[8], OFF);
-	setLEDOutput(nodes[9], OFF);
-	delay(2400000);
-	//osDelay(500);
+led_node* initBackLED() {
+	led_node node0 = initLED(21, PORTE, PTE);
+	led_node node1 = initLED(20, PORTE, PTE);
+	led_node node2 = initLED(5, PORTE, PTE);
+	led_node node3 = initLED(4, PORTE, PTE);
+	led_node node4 = initLED(3, PORTE, PTE);
+	led_node node5 = initLED(2, PORTE, PTE);
+	led_node node6 = initLED(11, PORTB, PTB);
+	led_node node7 = initLED(10, PORTB, PTB);
+	led_node node8 = initLED(9, PORTB, PTB);
+	led_node node9 = initLED(8, PORTB, PTB);
+
+	led_node nodes[10] = {node0, node1, node2, node3, node4, node5, node6, node7, node8, node9};
+	return nodes;
 }
 
-void lightAllLED(void) {
+
+void offAllLED(void) {
+	led_node* nodes = initFrontLED();
+	for (int i = 0; i < NUM_LEDS; i++) {
+		setLEDOutput(nodes[i], OFF);
+	}
+}
+
+void flashLEDFast(void *argument) {
+	led_node* nodes = initBackLED();
+	offAllLED();
+	for (;;) {
+		setLEDOutput(nodes[0], ON);
+		setLEDOutput(nodes[1], ON);
+		setLEDOutput(nodes[2], ON);
+		setLEDOutput(nodes[3], ON);
+		setLEDOutput(nodes[4], ON);
+		setLEDOutput(nodes[5], ON);
+		setLEDOutput(nodes[6], ON);
+		setLEDOutput(nodes[7], ON);
+		setLEDOutput(nodes[8], ON);
+		setLEDOutput(nodes[9], ON);
+		
+		osDelay(250);
+		
+		setLEDOutput(nodes[0], OFF);
+		setLEDOutput(nodes[1], OFF);
+		setLEDOutput(nodes[2], OFF);
+		setLEDOutput(nodes[3], OFF);
+		setLEDOutput(nodes[4], OFF);
+		setLEDOutput(nodes[5], OFF);
+		setLEDOutput(nodes[6], OFF);
+		setLEDOutput(nodes[7], OFF);
+		setLEDOutput(nodes[8], OFF);
+		setLEDOutput(nodes[9], OFF);
+		
+		osDelay(250);
+	}
+}
+
+void flashLEDSlow(void *argument) {
+	led_node* nodes = initBackLED();
+	offAllLED();
+	for (;;) {
+		setLEDOutput(nodes[0], ON);
+		setLEDOutput(nodes[1], ON);
+		setLEDOutput(nodes[2], ON);
+		setLEDOutput(nodes[3], ON);
+		setLEDOutput(nodes[4], ON);
+		setLEDOutput(nodes[5], ON);
+		setLEDOutput(nodes[6], ON);
+		setLEDOutput(nodes[7], ON);
+		setLEDOutput(nodes[8], ON);
+		setLEDOutput(nodes[9], ON);
+		
+		osDelay(500);
+		
+		setLEDOutput(nodes[0], OFF);
+		setLEDOutput(nodes[1], OFF);
+		setLEDOutput(nodes[2], OFF);
+		setLEDOutput(nodes[3], OFF);
+		setLEDOutput(nodes[4], OFF);
+		setLEDOutput(nodes[5], OFF);
+		setLEDOutput(nodes[6], OFF);
+		setLEDOutput(nodes[7], OFF);
+		setLEDOutput(nodes[8], OFF);
+		setLEDOutput(nodes[9], OFF);
+		
+		osDelay(500);
+	}
+}
+
+void lightAllLED(void *argument) {
 	led_node* nodes = initFrontLED();
 	for (int i = 0; i < NUM_LEDS; i++) {
 		setLEDOutput(nodes[i], ON);
@@ -99,9 +157,11 @@ void lightAllLED(void) {
 }
 
 
-void runningLED() {
+
+void runningLED(void *argument) {
 	led_node* nodes = initFrontLED();
-		for (int i = 0; i < NUM_LEDS; i++) {
+	offAllLED();
+	for (int i = 0; i < NUM_LEDS; i++) {
 	int left = 1;
 	int right = 0;
 	for (;;) {
