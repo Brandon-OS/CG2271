@@ -27,43 +27,6 @@ Project File Date:  10/20/2023
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
-RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
-//  ==== Enumerations, structures, defines ====
-^
-RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
-/// Kernel Information
-^
-RTE/CMSIS/RTX_Config.c(31): warning: // comments are not allowed in this language [-Wcomment]
-// OS Idle Thread
-^
-3 warnings generated.
-compiling RTX_Config.c...
-assembling startup_MKL25Z4.s...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(27): warning: In file included from...
-./RTE/CMSIS\RTX_Config.h(38): warning: // comments are not allowed in this language [-Wcomment]
-//-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
-^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
-//  ==== Enumerations, structures, defines ====
-^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
-/// Kernel Information
-^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(34): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_evr.h(29): warning: // comments are not allowed in this language [-Wcomment]
-#include "cmsis_os2.h"                  // CMSIS RTOS API
-                                        ^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(37): warning: // comments are not allowed in this language [-Wcomment]
-// System Configuration
-^
-5 warnings generated.
-compiling rtx_lib.c...
 main.c(7): warning: In file included from...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
 //  ==== Enumerations, structures, defines ====
@@ -199,74 +162,22 @@ main.c(17): note: declare 'static' if the variable is not intended to be used ou
  ^
 28 warnings generated.
 compiling main.c...
-Audio.c(2): warning: In file included from...
-./MotorControl.h(8): warning: // comments are not allowed in this language [-Wcomment]
-// Function prototypes
-^
-Audio.c(3): warning: In file included from...
-./Audio.h(100): warning: // comments are not allowed in this language [-Wcomment]
-// Function prototypes
-^
-./Audio.h(102): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void playEndAudio();
-                 ^
-                  void
-Audio.c(4): warning: In file included from...
+assembling startup_MKL25Z4.s...
+RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
 //  ==== Enumerations, structures, defines ====
 ^
-Audio.c(9): warning: // comments are not allowed in this language [-Wcomment]
-        return ((48000000 / 128) / freq) - 1;  // assume 48 MHz and 128 prescaler (PS)
-                                               ^
-Audio.c(13): warning: implicit conversion turns floating-point number into integer: 'float' to 'int' [-Wfloat-conversion]
-        return (((48000000 / 128) / freq) - 1) * duty_cycle;
-        ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-Audio.c(16): warning: no previous extern declaration for non-static variable 'end_song' [-Wmissing-variable-declarations]
-int end_song[] = {
-    ^
-Audio.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-int end_song[] = {
+RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
+/// Kernel Information
 ^
-Audio.c(38): warning: no previous extern declaration for non-static variable 'en_song' [-Wmissing-variable-declarations]
-int en_song[] = {
-    ^
-Audio.c(38): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-int en_song[] = {
+RTE/CMSIS/RTX_Config.c(31): warning: // comments are not allowed in this language [-Wcomment]
+// OS Idle Thread
 ^
-Audio.c(63): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void playEndAudio() {
-                 ^
-                  void
-Audio.c(65): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-        for (int i = 0; i < size; ++i) {
-             ^
-Audio.c(65): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-Audio.c(67): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-                        for (int j = 0; j < 16/end_song[2*i+1]; j++) {
-                             ^
-Audio.c(67): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-Audio.c(69): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-                                TPM0->MOD = freq;
-                                          ~ ^~~~
-Audio.c(70): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-                                TPM0_C3V = duty_cycle_calc(freq, (float) 0.1);  
-                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Audio.c(63): warning: no previous prototype for function 'playEndAudio' [-Wmissing-prototypes]
-void playEndAudio() {
-     ^
-./Audio.h(102): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
-void playEndAudio();
-     ^
-                  void
-Audio.c(77): warning: no previous prototype for function 'stop_sound' [-Wmissing-prototypes]
-void stop_sound(void) {
-     ^
-Audio.c(77): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void stop_sound(void) {
-^
-static 
-17 warnings generated.
-compiling Audio.c...
+3 warnings generated.
+compiling RTX_Config.c...
+compiling system_MKL25Z4.c...
 MotorControl.c(3): warning: // comments are not allowed in this language [-Wcomment]
 #define PTB0_Pin 0 //FRONT RIGHT
                    ^
@@ -385,7 +296,96 @@ void leftBackward(void) {
 static 
 20 warnings generated.
 compiling MotorControl.c...
-compiling system_MKL25Z4.c...
+Audio.c(2): warning: In file included from...
+./MotorControl.h(8): warning: // comments are not allowed in this language [-Wcomment]
+// Function prototypes
+^
+Audio.c(3): warning: In file included from...
+./Audio.h(100): warning: // comments are not allowed in this language [-Wcomment]
+// Function prototypes
+^
+./Audio.h(102): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void playEndAudio();
+                 ^
+                  void
+Audio.c(4): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+Audio.c(9): warning: // comments are not allowed in this language [-Wcomment]
+        return ((48000000 / 128) / freq) - 1;  // assume 48 MHz and 128 prescaler (PS)
+                                               ^
+Audio.c(13): warning: implicit conversion turns floating-point number into integer: 'float' to 'int' [-Wfloat-conversion]
+        return (((48000000 / 128) / freq) - 1) * duty_cycle;
+        ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+Audio.c(16): warning: no previous extern declaration for non-static variable 'end_song' [-Wmissing-variable-declarations]
+int end_song[] = {
+    ^
+Audio.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int end_song[] = {
+^
+Audio.c(38): warning: no previous extern declaration for non-static variable 'en_song' [-Wmissing-variable-declarations]
+int en_song[] = {
+    ^
+Audio.c(38): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int en_song[] = {
+^
+Audio.c(63): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void playEndAudio() {
+                 ^
+                  void
+Audio.c(65): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for (int i = 0; i < size; ++i) {
+             ^
+Audio.c(65): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+Audio.c(67): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+                        for (int j = 0; j < 16/end_song[2*i+1]; j++) {
+                             ^
+Audio.c(67): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+Audio.c(69): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                                TPM0->MOD = freq;
+                                          ~ ^~~~
+Audio.c(70): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                                TPM0_C3V = duty_cycle_calc(freq, (float) 0.1);  
+                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Audio.c(63): warning: no previous prototype for function 'playEndAudio' [-Wmissing-prototypes]
+void playEndAudio() {
+     ^
+./Audio.h(102): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
+void playEndAudio();
+     ^
+                  void
+Audio.c(77): warning: no previous prototype for function 'stop_sound' [-Wmissing-prototypes]
+void stop_sound(void) {
+     ^
+Audio.c(77): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void stop_sound(void) {
+^
+static 
+17 warnings generated.
+compiling Audio.c...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(27): warning: In file included from...
+./RTE/CMSIS\RTX_Config.h(38): warning: // comments are not allowed in this language [-Wcomment]
+//-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
+/// Kernel Information
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(34): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_evr.h(29): warning: // comments are not allowed in this language [-Wcomment]
+#include "cmsis_os2.h"                  // CMSIS RTOS API
+                                        ^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(37): warning: // comments are not allowed in this language [-Wcomment]
+// System Configuration
+^
+5 warnings generated.
+compiling rtx_lib.c...
 Serial.c(1): warning: // comments are not allowed in this language [-Wcomment]
 #include "MKL25Z4.h" // Device header
                      ^
@@ -471,23 +471,23 @@ LED.c(83): warning: variable declaration in for loop is a C99-specific feature [
              ^
 LED.c(83): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
 LED.c(81): warning: no previous prototype for function 'offAllLED' [-Wmissing-prototypes]
-void offAllLED(void) {
-     ^
+led_node* offAllLED(void) {
+          ^
 LED.c(81): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void offAllLED(void) {
+led_node* offAllLED(void) {
 ^
 static 
-LED.c(88): warning: unused parameter 'argument' [-Wunused-parameter]
+LED.c(89): warning: unused parameter 'argument' [-Wunused-parameter]
 void flashLEDFast(void *argument) {
                         ^
-LED.c(88): warning: no previous prototype for function 'flashLEDFast' [-Wmissing-prototypes]
+LED.c(89): warning: no previous prototype for function 'flashLEDFast' [-Wmissing-prototypes]
 void flashLEDFast(void *argument) {
      ^
-LED.c(88): note: declare 'static' if the function is not intended to be used outside of this translation unit
+LED.c(89): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void flashLEDFast(void *argument) {
 ^
 static 
-LED.c(88): warning: function 'flashLEDFast' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+LED.c(89): warning: function 'flashLEDFast' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void flashLEDFast(void *argument) {
                                   ^
 LED.c(120): warning: unused parameter 'argument' [-Wunused-parameter]
@@ -503,68 +503,71 @@ static
 LED.c(120): warning: function 'flashLEDSlow' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void flashLEDSlow(void *argument) {
                                   ^
-LED.c(154): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+LED.c(153): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
         for (int i = 0; i < NUM_LEDS; i++) {
              ^
-LED.c(154): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-LED.c(152): warning: unused parameter 'argument' [-Wunused-parameter]
+LED.c(153): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+LED.c(151): warning: unused parameter 'argument' [-Wunused-parameter]
 void lightAllLED(void *argument) {
                        ^
-LED.c(152): warning: no previous prototype for function 'lightAllLED' [-Wmissing-prototypes]
+LED.c(151): warning: no previous prototype for function 'lightAllLED' [-Wmissing-prototypes]
 void lightAllLED(void *argument) {
      ^
-LED.c(152): note: declare 'static' if the function is not intended to be used outside of this translation unit
+LED.c(151): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void lightAllLED(void *argument) {
 ^
 static 
-LED.c(164): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+LED.c(161): warning: // comments are not allowed in this language [-Wcomment]
+        //led_node* nodes = offAllLED();
+        ^
+LED.c(163): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
         for (int i = 0; i < NUM_LEDS; i++) {
              ^
-LED.c(164): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-LED.c(169): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+LED.c(163): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+LED.c(168): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
                         for (int i = 0; i < NUM_LEDS; i++) {
                              ^
-LED.c(169): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-LED.c(169): warning: declaration shadows a local variable [-Wshadow]
+LED.c(168): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+LED.c(168): warning: declaration shadows a local variable [-Wshadow]
                         for (int i = 0; i < NUM_LEDS; i++) {
                                  ^
-LED.c(164): note: previous declaration is here
+LED.c(163): note: previous declaration is here
         for (int i = 0; i < NUM_LEDS; i++) {
                  ^
-LED.c(182): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+LED.c(181): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
                         for (int i = NUM_LEDS-1; i >= 0; i--) {
                              ^
-LED.c(182): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-LED.c(182): warning: declaration shadows a local variable [-Wshadow]
+LED.c(181): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+LED.c(181): warning: declaration shadows a local variable [-Wshadow]
                         for (int i = NUM_LEDS-1; i >= 0; i--) {
                                  ^
-LED.c(164): note: previous declaration is here
+LED.c(163): note: previous declaration is here
         for (int i = 0; i < NUM_LEDS; i++) {
                  ^
-LED.c(195): warning: no newline at end of file [-Wnewline-eof]
+LED.c(194): warning: no newline at end of file [-Wnewline-eof]
 }
  ^
-LED.c(161): warning: unused parameter 'argument' [-Wunused-parameter]
+LED.c(160): warning: unused parameter 'argument' [-Wunused-parameter]
 void runningLED(void *argument) {
                       ^
-LED.c(161): warning: no previous prototype for function 'runningLED' [-Wmissing-prototypes]
+LED.c(160): warning: no previous prototype for function 'runningLED' [-Wmissing-prototypes]
 void runningLED(void *argument) {
      ^
-LED.c(161): note: declare 'static' if the function is not intended to be used outside of this translation unit
+LED.c(160): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void runningLED(void *argument) {
 ^
 static 
-LED.c(164): warning: loop will run at most once (loop increment never executed) [-Wunreachable-code-loop-increment]
+LED.c(163): warning: loop will run at most once (loop increment never executed) [-Wunreachable-code-loop-increment]
         for (int i = 0; i < NUM_LEDS; i++) {
                                       ^~~
 LED.c(16): warning: unused function 'delay' [-Wunused-function]
 static void delay(volatile uint32_t nof) {  
             ^
-37 warnings generated.
+38 warnings generated.
 compiling LED.c...
 linking...
-Program Size: Code=6776 RO-data=532 RW-data=168 ZI-data=5720  
-".\Objects\myRTX.axf" - 0 Error(s), 115 Warning(s).
+Program Size: Code=7040 RO-data=568 RW-data=168 ZI-data=6232  
+".\Objects\myRTX.axf" - 0 Error(s), 116 Warning(s).
 
 <h2>Software Packages used:</h2>
 

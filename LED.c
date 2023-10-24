@@ -21,7 +21,7 @@ static void delay(volatile uint32_t nof) {
 
 
 led_node initLED(int portNumber, PORT_Type* port, GPIO_Type* gpio) {
-	SIM->SCGC5 |= ((SIM_SCGC5_PORTA_MASK) | (SIM_SCGC5_PORTC_MASK) | (SIM_SCGC5_PORTD_MASK));
+	SIM->SCGC5 |= ((SIM_SCGC5_PORTA_MASK) | (SIM_SCGC5_PORTB_MASK) | (SIM_SCGC5_PORTC_MASK) | (SIM_SCGC5_PORTD_MASK) | (SIM_SCGC5_PORTE_MASK));
 	led_node node;
 	node.portNumber = portNumber;
 	node.port = port;
@@ -78,16 +78,16 @@ led_node* initBackLED() {
 }
 
 
-void offAllLED(void) {
+led_node* offAllLED(void) {
 	led_node* nodes = initFrontLED();
 	for (int i = 0; i < NUM_LEDS; i++) {
 		setLEDOutput(nodes[i], OFF);
 	}
+	return nodes;
 }
 
 void flashLEDFast(void *argument) {
 	led_node* nodes = initBackLED();
-	offAllLED();
 	for (;;) {
 		setLEDOutput(nodes[0], ON);
 		setLEDOutput(nodes[1], ON);
@@ -119,7 +119,6 @@ void flashLEDFast(void *argument) {
 
 void flashLEDSlow(void *argument) {
 	led_node* nodes = initBackLED();
-	offAllLED();
 	for (;;) {
 		setLEDOutput(nodes[0], ON);
 		setLEDOutput(nodes[1], ON);
@@ -159,8 +158,8 @@ void lightAllLED(void *argument) {
 
 
 void runningLED(void *argument) {
-	led_node* nodes = initFrontLED();
-	offAllLED();
+	led_node* nodes = offAllLED();
+	//led_node* nodes = initBackLED();
 	for (int i = 0; i < NUM_LEDS; i++) {
 	int left = 1;
 	int right = 0;

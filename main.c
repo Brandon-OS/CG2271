@@ -66,7 +66,8 @@ int main (void) {
 	//osThreadNew(brain_thread, NULL, NULL);
 	//osThreadNew(audio_thread, NULL, NULL);
 	runningLedThread();
-	//flashLedStationaryThread();
+	//lightAllLedThread();
+	flashLedStationaryThread();
   //osThreadNew(motor_thread, NULL, NULL);    // Create application main thread
 	osKernelStart();
 /**	// Start thread execution
