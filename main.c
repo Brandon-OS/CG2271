@@ -65,15 +65,6 @@ void run_sound_thread() {
  * Application main thread
  *---------------------------------------------------------------------------*/
 
-void motor_thread (void *argument) {
-	for (;;) { 
-		rightForward();
-		osDelay(10000);
-		leftBackward();
-		osDelay(10000);
-	}
-}
-
 
 volatile uint8_t rx_data;
 
@@ -153,23 +144,22 @@ void control (void* argument) {
 int main (void) {
   // System Initialization
 	SystemCoreClockUpdate();
-	//flagEndingSound = osEventFlagsNew(NULL);
-	//flagRunningSound = osEventFlagsNew(NULL);
-
-	//flagFinish = osEventFlagsNew(NULL);
+	flagEndingSound = osEventFlagsNew(NULL);
+	flagRunningSound = osEventFlagsNew(NULL);
+	flagFinish = osEventFlagsNew(NULL);
 	
-	//flagStation = osEventFlagsNew(NULL);
-	//flagRunning = osEventFlagsNew(NULL);
+	flagStation = osEventFlagsNew(NULL);
+	flagRunning = osEventFlagsNew(NULL);
 	
-	//initAudio();
-	//initMotor();
-	//initUART2(BAUD_RATE);
+	initAudio();
+	initMotor();
+	initUART2(BAUD_RATE);
   osKernelInitialize();                 // Initialize CMSIS-RTOS
-	//osThreadNew(end_sound_thread, NULL, NULL);
-	//osThreadNew(run_sound_thread, NULL, NULL);
+	osThreadNew(end_sound_thread, NULL, NULL);
+	osThreadNew(run_sound_thread, NULL, NULL);
+	osThreadNew(control, NULL, NULL);
 	runningLedThread();
-	//flashLedStationaryThread();
-  //osThreadNew(motor_thread, NULL, NULL);    // Create application main thread
+	flashLedStationaryThread();
 	osKernelStart();
   for (;;) {}
 }

@@ -13,6 +13,12 @@ typedef enum state {
 	ON, OFF
 } states;
 
+extern osEventFlagsId_t 
+	flagRunningSound, flagEndingSound, 
+	flagFinish,
+	flagRunning, flagStation
+;
+
 static void delay(volatile uint32_t nof) {  
 	while(nof!=0) {
     __asm("NOP");    
@@ -21,7 +27,7 @@ static void delay(volatile uint32_t nof) {
 
 
 led_node initLED(int portNumber, PORT_Type* port, GPIO_Type* gpio) {
-	SIM->SCGC5 |= ((SIM_SCGC5_PORTA_MASK) | (SIM_SCGC5_PORTB_MASK) | (SIM_SCGC5_PORTC_MASK) | (SIM_SCGC5_PORTD_MASK) | (SIM_SCGC5_PORTE_MASK));
+	SIM->SCGC5 |= ((SIM_SCGC5_PORTA_MASK) | (SIM_SCGC5_PORTC_MASK) | (SIM_SCGC5_PORTD_MASK));
 	led_node node;
 	node.portNumber = portNumber;
 	node.port = port;
@@ -78,17 +84,18 @@ led_node* initBackLED() {
 }
 
 
-led_node* offAllLED(void) {
+void offAllLED(void) {
 	led_node* nodes = initFrontLED();
 	for (int i = 0; i < NUM_LEDS; i++) {
 		setLEDOutput(nodes[i], OFF);
 	}
-	return nodes;
 }
 
 void flashLEDFast(void *argument) {
 	led_node* nodes = initBackLED();
+	offAllLED();
 	for (;;) {
+		osEventFlagsWait(flagStation, 0x01, osFlagsNoClear, osWaitForever);
 		setLEDOutput(nodes[0], ON);
 		setLEDOutput(nodes[1], ON);
 		setLEDOutput(nodes[2], ON);
@@ -119,7 +126,9 @@ void flashLEDFast(void *argument) {
 
 void flashLEDSlow(void *argument) {
 	led_node* nodes = initBackLED();
+	offAllLED();
 	for (;;) {
+		osEventFlagsWait(flagRunning, 0x01, osFlagsNoClear, osWaitForever);
 		setLEDOutput(nodes[0], ON);
 		setLEDOutput(nodes[1], ON);
 		setLEDOutput(nodes[2], ON);
@@ -151,6 +160,7 @@ void flashLEDSlow(void *argument) {
 void lightAllLED(void *argument) {
 	led_node* nodes = initFrontLED();
 	for (int i = 0; i < NUM_LEDS; i++) {
+		osEventFlagsWait(flagStation, 0x01, osFlagsNoClear, osWaitForever);
 		setLEDOutput(nodes[i], ON);
 	}
 }
@@ -158,12 +168,13 @@ void lightAllLED(void *argument) {
 
 
 void runningLED(void *argument) {
-	led_node* nodes = offAllLED();
-	//led_node* nodes = initBackLED();
+	led_node* nodes = initFrontLED();
+	offAllLED();
 	for (int i = 0; i < NUM_LEDS; i++) {
 	int left = 1;
 	int right = 0;
 	for (;;) {
+		osEventFlagsWait(flagRunning, 0x01, osFlagsNoClear, osWaitForever);
 		if (left == 1) {
 			for (int i = 0; i < NUM_LEDS; i++) {
 				setLEDOutput(nodes[i], ON);
