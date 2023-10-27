@@ -1,8 +1,9 @@
 #ifndef SERIAL_H
 #define SERIAL_H
 #include "MKL25Z4.h"
-
-#define BAUD_RATE 9600
+#include <stdbool.h>
 // Function prototypes
-void initUART2(uint32_t);
+void initUART2(void);
+void UART2_IRQHandler(void);
+
 #endif

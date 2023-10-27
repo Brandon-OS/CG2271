@@ -9,20 +9,21 @@
 #include "MotorControl.h"
 #include "Serial.h"
 #include "Audio.h"
+#include "common.h"
 #include "LED.h"
 
  /*----------------------------------------------------------------------------
  * Flags
  *---------------------------------------------------------------------------*/
  
- osEventFlagsId_t 
+osEventFlagsId_t 
 	flagRunningSound, flagEndingSound, 
 	flagFinish,
 	flagRunning, flagStation
 ;
  
  int run_song[] = {
-	NOTE_AS4,8, NOTE_AS4,8, NOTE_AS4,8,//1
+	NOTE_AS4,8, NOTE_AS4,8, NOTE_AS4,8,
   NOTE_F5,2, NOTE_C6,2,
   NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F6,2, NOTE_C6,4,  
   NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F6,2, NOTE_C6,4,  
@@ -30,20 +31,21 @@
   NOTE_F5,2, NOTE_C6,2,
   NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F6,2, NOTE_C6,4,  
   
-  NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F6,2, NOTE_C6,4, //8  
+  NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F6,2, NOTE_C6,4, 
   NOTE_AS5,8, NOTE_A5,8, NOTE_AS5,8, NOTE_G5,2, NOTE_C5,-8, NOTE_C5,16, 
   NOTE_D5,-4, NOTE_D5,8, NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F5,8,
   NOTE_F5,8, NOTE_G5,8, NOTE_A5,8, NOTE_G5,4, NOTE_D5,8, NOTE_E5,4,NOTE_C5,-8, NOTE_C5,16,
   NOTE_D5,-4, NOTE_D5,8, NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F5,8,
   
-  NOTE_C6,-8, NOTE_G5,16, NOTE_G5,2, REST,8, NOTE_C5,8,//13
+  NOTE_C6,-8, NOTE_G5,16, NOTE_G5,2, REST,8, NOTE_C5,8,
   NOTE_D5,-4, NOTE_D5,8, NOTE_AS5,8, NOTE_A5,8, NOTE_G5,8, NOTE_F5,8,
   NOTE_F5,8, NOTE_G5,8, NOTE_A5,8, NOTE_G5,4, NOTE_D5,8, NOTE_E5,4,NOTE_C6,-8, NOTE_C6,16,
   NOTE_F6,4, NOTE_DS6,8, NOTE_CS6,4, NOTE_C6,8, NOTE_AS5,4, NOTE_GS5,8, NOTE_G5,4, NOTE_F5,8,
   NOTE_C6,1
 };
  
-volatile char rx_data;
+volatile uint8_t rx_data;
+
 void UART2_IRQHandler(void) {
   NVIC_ClearPendingIRQ(UART2_IRQn);
 	
@@ -73,7 +75,7 @@ void run_sound_thread() {
  * Application main thread
  *---------------------------------------------------------------------------*/
 
-
+/*
 uint8_t UART2_Receive_Poll(void) {
 	while(!(UART2->S1 & UART_S1_RDRF_MASK));
 	return (UART2->D);
@@ -84,6 +86,7 @@ void poll_thread (void *argument) {
 		rx_data = UART2_Receive_Poll();
 	}
 }
+*/
 
 void end_sound_thread (void *argument) {
 	for (;;) {
@@ -98,51 +101,50 @@ void control (void* argument) {
 	osEventFlagsSet(flagStation, 0x01);
 	
 	for (;;) {
-		//printf("Value of rx_data: %u\n", rx_data);
-		if (rx_data == 0x30) { //forward
+		if (rx_data == 0x30) { 
 			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
 			forward();
-		} else if (rx_data == 0x31) { // backward
+		} else if (rx_data == 0x31) { 
 			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
 			backward();
-		} else if (rx_data == 0x32) { // left 
+		} else if (rx_data == 0x32) { 
 			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
 			left();
-		} else if (rx_data == 0x33) { // right 
+		} else if (rx_data == 0x33) {  
 			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
 			right();
-		} else if (rx_data == 0x34) { //stop
+		} else if (rx_data == 0x34) { 
 			osEventFlagsSet(flagStation, 0x01);
 			osEventFlagsClear(flagRunning, 0x01);
 			stop();
-		} else if (rx_data == 0x35) { //right forward
+		} else if (rx_data == 0x35) { 
 			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
 			rightForward();
-		} else if (rx_data == 0x36) { //left forward
+		} else if (rx_data == 0x36) { 
 			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
 			leftForward();
-		} else if (rx_data == 0x37) { //right backward 
+		} else if (rx_data == 0x37) {  
 			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
 			rightBackward();
-		} else if (rx_data == 0x38) { //left backward
+		} else if (rx_data == 0x38) {
 			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
 			leftBackward();
-		} else if (rx_data == 0x39) { //finish
+		} else if (rx_data == 0x39) { 
 			osEventFlagsClear(flagRunningSound, 0x01);
 			osEventFlagsSet(flagEndingSound, 0x01);
-		} else if (rx_data == 0x40) { // stop sound
+		} else if (rx_data == 0x40) {
 			stopSound();
 			osEventFlagsClear(flagRunningSound, 0x01);
 			osEventFlagsClear(flagEndingSound, 0x01);			
-		} else if (rx_data == 0x41) { // on run sound
+		} else if (rx_data == 0x41) {
 			osEventFlagsClear(flagEndingSound, 0x01);
 			osEventFlagsSet(flagRunningSound, 0x01);
 		}
@@ -156,19 +158,20 @@ void control (void* argument) {
 			backward();
 	 }
  }
+ 
 int main (void) {
   // System Initialization
 	SystemCoreClockUpdate();
+	
 	flagEndingSound = osEventFlagsNew(NULL);
 	flagRunningSound = osEventFlagsNew(NULL);
 	flagFinish = osEventFlagsNew(NULL);
-	
 	flagStation = osEventFlagsNew(NULL);
 	flagRunning = osEventFlagsNew(NULL);
 	
-	initAudio();
 	initMotor();
-	initUART2(BAUD_RATE);
+	initAudio();
+	initUART2();
   osKernelInitialize();                 // Initialize CMSIS-RTOS
 	osThreadNew(end_sound_thread, NULL, NULL);
 	osThreadNew(run_sound_thread, NULL, NULL);
@@ -176,6 +179,8 @@ int main (void) {
 	//osThreadNew(poll_thread, NULL, NULL);
 	runningLedThread();
 	flashLedStationaryThread();
+	flashLedMovingThread();
+	lightAllLedThread();
 	//osThreadNew(motor_thread, NULL, NULL);
 	osKernelStart();
   for (;;) {}

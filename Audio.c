@@ -3,6 +3,7 @@
 #include "Audio.h"
 #include "cmsis_os2.h"
 
+#define BAUD_RATE 9600
 #define PTE30_Pin 30
 
 int freq_calc(int freq) {

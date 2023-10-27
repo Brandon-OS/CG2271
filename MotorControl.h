@@ -3,7 +3,6 @@
 #include "MKL25Z4.h"
 
 int pwm_cal(float duty);
-char parseMove(uint8_t data);
 
 // Function prototypes
 void initMotor(void);

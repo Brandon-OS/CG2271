@@ -97,7 +97,6 @@
 int freq_calc(int freq);
 int duty_cycle_calc(int freq, float duty);
 
-// Function prototypes
 void initAudio(void);
 void playEndAudio();
 void stopSound(void);

@@ -1,31 +1,17 @@
 #include "MKL25Z4.h" 
 
-#define PTB0_Pin 0 //FRONT RIGHT
-#define PTB1_Pin 1 //BACK RIGHT
-#define PTB2_Pin 2 //FRONT LEFT
-#define PTB3_Pin 3 //BACK LEFT
+#define PTB0_Pin 0 
+#define PTB1_Pin 1
+#define PTB2_Pin 2
+#define PTB3_Pin 3 
 #define MOTOR_FREQ 500
 #define MOTOR_DUTY 1
 
 int pwm_cal(float duty_cycle) {
-	return 6000*(duty_cycle/100);
-}
-char parseMove(uint8_t data) {
-	switch (data) {
-		case 0x30:
-			return 'S';
-		case 0x31:
-			return 'F';
-		case 0x32:
-			return 'L';
-		case 0x33:
-			return 'R';
-		case 0x34:
-			return 'B';
-	}
+	return 6000 *(duty_cycle/100);
 }
 
-void initMotor (void) {
+void initMotor(void) {
 	SIM_SCGC5 |= SIM_SCGC5_PORTB_MASK;
   
 	PORTB->PCR[PTB0_Pin] &= ~PORT_PCR_MUX_MASK;

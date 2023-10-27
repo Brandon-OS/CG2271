@@ -1,5 +1,6 @@
 #include "MKL25Z4.h" 
 #include "cmsis_os2.h"
+#include "common.h"
 #define MASK(x) (1 << (x))
 #define NUM_LEDS 10
 
@@ -12,12 +13,6 @@ typedef struct node {
 typedef enum state {
 	ON, OFF
 } states;
-
-extern osEventFlagsId_t 
-	flagRunningSound, flagEndingSound, 
-	flagFinish,
-	flagRunning, flagStation
-;
 
 static void delay(volatile uint32_t nof) {  
 	while(nof!=0) {
@@ -165,12 +160,9 @@ void lightAllLED(void *argument) {
 	}
 }
 
-
-
 void runningLED(void *argument) {
 	led_node* nodes = initFrontLED();
 	offAllLED();
-	for (int i = 0; i < NUM_LEDS; i++) {
 	int left = 1;
 	int right = 0;
 	for (;;) {
@@ -201,5 +193,4 @@ void runningLED(void *argument) {
 			}
 		}
 	}
-}
 }

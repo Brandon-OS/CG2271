@@ -2,6 +2,7 @@
 #define LED_H
 #include "MKL25Z4.h"
 #include "cmsis_os2.h"
+#include "common.h"
 
 static uint64_t runningled_stk[64];
 static uint64_t flashled_stk1[64];
