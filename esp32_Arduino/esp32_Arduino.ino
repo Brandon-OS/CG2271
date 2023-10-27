@@ -4,6 +4,8 @@
 
 #define RXD2 16
 #define TXD2 17
+#define TXD0 1
+#define RXD0 3
 
 // Auxiliar variables to store the current output state
 String output26State = "off";
@@ -76,6 +78,6 @@ void loop() {
       response = "finish sound";
       Serial2.write(0x41);
     }
-    if (response != "") Serial.println(response);
+    Serial.println(response);
   }
 }

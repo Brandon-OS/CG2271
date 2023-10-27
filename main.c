@@ -43,6 +43,14 @@
   NOTE_C6,1
 };
  
+volatile char rx_data;
+void UART2_IRQHandler(void) {
+  NVIC_ClearPendingIRQ(UART2_IRQn);
+	
+  if (UART2->S1 & UART_S1_RDRF_MASK) {
+    rx_data = UART2->D;
+  }
+}
 
 void run_sound_thread() {
 	int size = 88;
@@ -66,14 +74,9 @@ void run_sound_thread() {
  *---------------------------------------------------------------------------*/
 
 
-volatile uint8_t rx_data;
-
-void UART2_IRQHandler(void) {
-  NVIC_ClearPendingIRQ(UART2_IRQn);
-	
-  if (UART2->S1 & UART_S1_RDRF_MASK) {
-    rx_data = UART2->D;
-  }
+uint8_t UART2_Receive_Poll(void) {
+	while(!(UART2->S1 & UART_S1_RDRF_MASK));
+	return (UART2->D);
 }
 
 void poll_thread (void *argument) {
@@ -93,8 +96,9 @@ void control (void* argument) {
 	osEventFlagsClear(flagRunning, 0x01);
 	osEventFlagsSet(flagRunningSound, 0x01);
 	osEventFlagsSet(flagStation, 0x01);
+	
 	for (;;) {
-		printf("Value of rx_data: %u\n", rx_data);
+		//printf("Value of rx_data: %u\n", rx_data);
 		if (rx_data == 0x30) { //forward
 			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
@@ -168,8 +172,8 @@ int main (void) {
   osKernelInitialize();                 // Initialize CMSIS-RTOS
 	osThreadNew(end_sound_thread, NULL, NULL);
 	osThreadNew(run_sound_thread, NULL, NULL);
-	//osThreadNew(control, NULL, NULL);
-	osThreadNew(poll_thread, NULL, NULL);
+	osThreadNew(control, NULL, NULL);
+	//osThreadNew(poll_thread, NULL, NULL);
 	runningLedThread();
 	flashLedStationaryThread();
 	//osThreadNew(motor_thread, NULL, NULL);

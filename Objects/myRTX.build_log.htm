@@ -27,6 +27,99 @@ Project File Date:  10/20/2023
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
+Serial.c(1): warning: // comments are not allowed in this language [-Wcomment]
+#include "MKL25Z4.h" // Device header
+                     ^
+Serial.c(40): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+Serial.c(10): warning: no previous prototype for function 'initUART2' [-Wmissing-prototypes]
+void initUART2 (uint32_t baud_rate) {
+     ^
+Serial.c(10): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void initUART2 (uint32_t baud_rate) {
+^
+static 
+3 warnings generated.
+compiling Serial.c...
+assembling startup_MKL25Z4.s...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(27): warning: In file included from...
+./RTE/CMSIS\RTX_Config.h(38): warning: // comments are not allowed in this language [-Wcomment]
+//-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
+/// Kernel Information
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(34): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_evr.h(29): warning: // comments are not allowed in this language [-Wcomment]
+#include "cmsis_os2.h"                  // CMSIS RTOS API
+                                        ^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(37): warning: // comments are not allowed in this language [-Wcomment]
+// System Configuration
+^
+5 warnings generated.
+compiling rtx_lib.c...
+Audio.c(2): warning: In file included from...
+./MotorControl.h(8): warning: // comments are not allowed in this language [-Wcomment]
+// Function prototypes
+^
+Audio.c(3): warning: In file included from...
+./Audio.h(100): warning: // comments are not allowed in this language [-Wcomment]
+// Function prototypes
+^
+./Audio.h(102): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void playEndAudio();
+                 ^
+                  void
+Audio.c(4): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+Audio.c(9): warning: // comments are not allowed in this language [-Wcomment]
+        return ((48000000 / 128) / freq) - 1;  // assume 48 MHz and 128 prescaler (PS)
+                                               ^
+Audio.c(13): warning: implicit conversion turns floating-point number into integer: 'float' to 'int' [-Wfloat-conversion]
+        return (((48000000 / 128) / freq) - 1) * duty_cycle;
+        ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+Audio.c(16): warning: no previous extern declaration for non-static variable 'end_song' [-Wmissing-variable-declarations]
+int end_song[] = {
+    ^
+Audio.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int end_song[] = {
+^
+Audio.c(41): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void playEndAudio() {
+                 ^
+                  void
+Audio.c(43): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for (int i = 0; i < size; ++i) {
+             ^
+Audio.c(43): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+Audio.c(45): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+                        for (int j = 0; j < 16/end_song[2*i+1]; j++) {
+                             ^
+Audio.c(45): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+Audio.c(47): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                                TPM0->MOD = freq;
+                                          ~ ^~~~
+Audio.c(48): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                                TPM0_C3V = duty_cycle_calc(freq, (float) 0.1);  
+                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Audio.c(41): warning: no previous prototype for function 'playEndAudio' [-Wmissing-prototypes]
+void playEndAudio() {
+     ^
+./Audio.h(102): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
+void playEndAudio();
+     ^
+                  void
+15 warnings generated.
+compiling Audio.c...
 MotorControl.c(3): warning: // comments are not allowed in this language [-Wcomment]
 #define PTB0_Pin 0 //FRONT RIGHT
                    ^
@@ -145,85 +238,21 @@ void leftBackward(void) {
 static 
 20 warnings generated.
 compiling MotorControl.c...
-assembling startup_MKL25Z4.s...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(27): warning: In file included from...
-./RTE/CMSIS\RTX_Config.h(38): warning: // comments are not allowed in this language [-Wcomment]
-//-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
-^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
+compiling system_MKL25Z4.c...
+RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
 //  ==== Enumerations, structures, defines ====
 ^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
+RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
 /// Kernel Information
 ^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(34): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_evr.h(29): warning: // comments are not allowed in this language [-Wcomment]
-#include "cmsis_os2.h"                  // CMSIS RTOS API
-                                        ^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(37): warning: // comments are not allowed in this language [-Wcomment]
-// System Configuration
+RTE/CMSIS/RTX_Config.c(31): warning: // comments are not allowed in this language [-Wcomment]
+// OS Idle Thread
 ^
-5 warnings generated.
-compiling rtx_lib.c...
-compiling system_MKL25Z4.c...
-Audio.c(2): warning: In file included from...
-./MotorControl.h(8): warning: // comments are not allowed in this language [-Wcomment]
-// Function prototypes
-^
-Audio.c(3): warning: In file included from...
-./Audio.h(100): warning: // comments are not allowed in this language [-Wcomment]
-// Function prototypes
-^
-./Audio.h(102): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void playEndAudio();
-                 ^
-                  void
-Audio.c(4): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
-//  ==== Enumerations, structures, defines ====
-^
-Audio.c(9): warning: // comments are not allowed in this language [-Wcomment]
-        return ((48000000 / 128) / freq) - 1;  // assume 48 MHz and 128 prescaler (PS)
-                                               ^
-Audio.c(13): warning: implicit conversion turns floating-point number into integer: 'float' to 'int' [-Wfloat-conversion]
-        return (((48000000 / 128) / freq) - 1) * duty_cycle;
-        ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-Audio.c(16): warning: no previous extern declaration for non-static variable 'end_song' [-Wmissing-variable-declarations]
-int end_song[] = {
-    ^
-Audio.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-int end_song[] = {
-^
-Audio.c(41): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void playEndAudio() {
-                 ^
-                  void
-Audio.c(43): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-        for (int i = 0; i < size; ++i) {
-             ^
-Audio.c(43): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-Audio.c(45): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-                        for (int j = 0; j < 16/end_song[2*i+1]; j++) {
-                             ^
-Audio.c(45): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-Audio.c(47): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-                                TPM0->MOD = freq;
-                                          ~ ^~~~
-Audio.c(48): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-                                TPM0_C3V = duty_cycle_calc(freq, (float) 0.1);  
-                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Audio.c(41): warning: no previous prototype for function 'playEndAudio' [-Wmissing-prototypes]
-void playEndAudio() {
-     ^
-./Audio.h(102): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
-void playEndAudio();
-     ^
-                  void
-15 warnings generated.
-compiling Audio.c...
+3 warnings generated.
+compiling RTX_Config.c...
 main.c(7): warning: In file included from...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
 //  ==== Enumerations, structures, defines ====
@@ -318,95 +347,98 @@ main.c(24): warning: no previous extern declaration for non-static variable 'run
 main.c(24): note: declare 'static' if the variable is not intended to be used outside of this translation unit
  int run_song[] = {
  ^
-main.c(47): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+main.c(47): warning: no previous prototype for function 'UART2_IRQHandler' [-Wmissing-prototypes]
+void UART2_IRQHandler(void) {
+     ^
+main.c(47): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void UART2_IRQHandler(void) {
+^
+static 
+main.c(55): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
 void run_sound_thread() {
                      ^
                       void
-main.c(50): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+main.c(58): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
                 for (int i = 0; i < size; ++i) {
                      ^
-main.c(50): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-main.c(53): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+main.c(58): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+main.c(61): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
                                 for (int j = 0; j < 16/run_song[2*i+1]; j++) {
                                      ^
-main.c(53): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-main.c(55): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+main.c(61): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+main.c(63): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
                                         TPM0->MOD = freq;
                                                   ~ ^~~~
-main.c(56): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+main.c(64): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
                                         TPM0_C3V = duty_cycle_calc(freq, (float) 0.1);  
                                                  ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-main.c(47): warning: no previous prototype for function 'run_sound_thread' [-Wmissing-prototypes]
+main.c(55): warning: no previous prototype for function 'run_sound_thread' [-Wmissing-prototypes]
 void run_sound_thread() {
      ^
-main.c(47): note: declare 'static' if the function is not intended to be used outside of this translation unit
+main.c(55): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void run_sound_thread() {
 ^
 static 
-main.c(47): warning: function 'run_sound_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+main.c(55): warning: function 'run_sound_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void run_sound_thread() {
                         ^
-main.c(71): warning: no previous prototype for function 'UART2_IRQHandler' [-Wmissing-prototypes]
-void UART2_IRQHandler(void) {
-     ^
-main.c(71): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void UART2_IRQHandler(void) {
+main.c(77): warning: no previous prototype for function 'UART2_Receive_Poll' [-Wmissing-prototypes]
+uint8_t UART2_Receive_Poll(void) {
+        ^
+main.c(77): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint8_t UART2_Receive_Poll(void) {
 ^
 static 
-main.c(79): warning: unused parameter 'argument' [-Wunused-parameter]
+main.c(82): warning: unused parameter 'argument' [-Wunused-parameter]
 void poll_thread (void *argument) {
                         ^
-main.c(79): warning: no previous prototype for function 'poll_thread' [-Wmissing-prototypes]
+main.c(82): warning: no previous prototype for function 'poll_thread' [-Wmissing-prototypes]
 void poll_thread (void *argument) {
      ^
-main.c(79): note: declare 'static' if the function is not intended to be used outside of this translation unit
+main.c(82): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void poll_thread (void *argument) {
 ^
 static 
-main.c(79): warning: function 'poll_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+main.c(82): warning: function 'poll_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void poll_thread (void *argument) {
                                   ^
-main.c(85): warning: unused parameter 'argument' [-Wunused-parameter]
+main.c(88): warning: unused parameter 'argument' [-Wunused-parameter]
 void end_sound_thread (void *argument) {
                              ^
-main.c(85): warning: no previous prototype for function 'end_sound_thread' [-Wmissing-prototypes]
+main.c(88): warning: no previous prototype for function 'end_sound_thread' [-Wmissing-prototypes]
 void end_sound_thread (void *argument) {
      ^
-main.c(85): note: declare 'static' if the function is not intended to be used outside of this translation unit
+main.c(88): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void end_sound_thread (void *argument) {
 ^
 static 
-main.c(85): warning: function 'end_sound_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+main.c(88): warning: function 'end_sound_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void end_sound_thread (void *argument) {
                                        ^
-main.c(97): warning: implicitly declaring library function 'printf' with type 'int (const char *, ...)' [-Wimplicit-function-declaration]
-                printf("Value of rx_data: %u\n", rx_data);
-                ^
-main.c(97): note: include the header <stdio.h> or explicitly provide a declaration for 'printf'
-main.c(92): warning: unused parameter 'argument' [-Wunused-parameter]
+main.c(95): warning: unused parameter 'argument' [-Wunused-parameter]
 void control (void* argument) {
                     ^
-main.c(92): warning: no previous prototype for function 'control' [-Wmissing-prototypes]
+main.c(95): warning: no previous prototype for function 'control' [-Wmissing-prototypes]
 void control (void* argument) {
      ^
-main.c(92): note: declare 'static' if the function is not intended to be used outside of this translation unit
+main.c(95): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void control (void* argument) {
 ^
 static 
-main.c(92): warning: function 'control' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+main.c(95): warning: function 'control' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void control (void* argument) {
                               ^
-main.c(149): warning: unused parameter 'argument' [-Wunused-parameter]
+main.c(153): warning: unused parameter 'argument' [-Wunused-parameter]
  void motor_thread(void* argument) {
                          ^
-main.c(149): warning: no previous prototype for function 'motor_thread' [-Wmissing-prototypes]
+main.c(153): warning: no previous prototype for function 'motor_thread' [-Wmissing-prototypes]
  void motor_thread(void* argument) {
       ^
-main.c(149): note: declare 'static' if the function is not intended to be used outside of this translation unit
+main.c(153): note: declare 'static' if the function is not intended to be used outside of this translation unit
  void motor_thread(void* argument) {
  ^
  static 
-main.c(149): warning: function 'motor_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+main.c(153): warning: function 'motor_thread' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
  void motor_thread(void* argument) {
                                    ^
 main.c(19): warning: no previous extern declaration for non-static variable 'flagRunningSound' [-Wmissing-variable-declarations]
@@ -439,11 +471,11 @@ main.c(21): warning: no previous extern declaration for non-static variable 'fla
 main.c(18): note: declare 'static' if the variable is not intended to be used outside of this translation unit
  osEventFlagsId_t 
  ^
-main.c(69): warning: no previous extern declaration for non-static variable 'rx_data' [-Wmissing-variable-declarations]
-volatile uint8_t rx_data;
-                 ^
-main.c(69): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-volatile uint8_t rx_data;
+main.c(46): warning: no previous extern declaration for non-static variable 'rx_data' [-Wmissing-variable-declarations]
+volatile char rx_data;
+              ^
+main.c(46): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile char rx_data;
          ^
 48 warnings generated.
 compiling main.c...
@@ -594,52 +626,9 @@ static void delay(volatile uint32_t nof) {
             ^
 37 warnings generated.
 compiling LED.c...
-Serial.c(1): warning: // comments are not allowed in this language [-Wcomment]
-#include "MKL25Z4.h" // Device header
-                     ^
-Serial.c(9): warning: no previous prototype for function 'UART2_Receive_Poll' [-Wmissing-prototypes]
-uint8_t UART2_Receive_Poll(void) {
-        ^
-Serial.c(9): note: declare 'static' if the function is not intended to be used outside of this translation unit
-uint8_t UART2_Receive_Poll(void) {
-^
-static 
-Serial.c(14): warning: no previous prototype for function 'initUART2' [-Wmissing-prototypes]
-void initUART2 (uint32_t baud_rate) { 
-     ^
-Serial.c(14): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void initUART2 (uint32_t baud_rate) { 
-^
-static 
-Serial.c(48): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-Serial.c(43): warning: no previous prototype for function 'serial' [-Wmissing-prototypes]
-uint8_t serial(void) {
-        ^
-Serial.c(43): note: declare 'static' if the function is not intended to be used outside of this translation unit
-uint8_t serial(void) {
-^
-static 
-5 warnings generated.
-compiling Serial.c...
-RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
-//  ==== Enumerations, structures, defines ====
-^
-RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
-/// Kernel Information
-^
-RTE/CMSIS/RTX_Config.c(31): warning: // comments are not allowed in this language [-Wcomment]
-// OS Idle Thread
-^
-3 warnings generated.
-compiling RTX_Config.c...
 linking...
-Program Size: Code=9892 RO-data=568 RW-data=976 ZI-data=6256  
-".\Objects\myRTX.axf" - 0 Error(s), 133 Warning(s).
+Program Size: Code=11548 RO-data=568 RW-data=976 ZI-data=6256  
+".\Objects\myRTX.axf" - 0 Error(s), 131 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -693,7 +682,7 @@ Package Vendor: Keil
       Source file:   Device/Source/ARM/startup_MKL25Z4.s
       Include file:  Device/Source/system_MKL25Z4.h
       Source file:   Device/Source/system_MKL25Z4.c
-Build Time Elapsed:  00:00:08
+Build Time Elapsed:  00:00:09
 </pre>
 </body>
 </html>
