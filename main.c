@@ -76,6 +76,12 @@ void UART2_IRQHandler(void) {
   }
 }
 
+void poll_thread (void *argument) {
+	for (;;) {
+		rx_data = UART2_Receive_Poll();
+	}
+}
+
 void end_sound_thread (void *argument) {
 	for (;;) {
 		osEventFlagsWait(flagEndingSound, 0x01, osFlagsWaitAny, osWaitForever);
@@ -88,8 +94,7 @@ void control (void* argument) {
 	osEventFlagsSet(flagRunningSound, 0x01);
 	osEventFlagsSet(flagStation, 0x01);
 	for (;;) {
-		
-		
+		printf("Value of rx_data: %u\n", rx_data);
 		if (rx_data == 0x30) { //forward
 			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
@@ -141,6 +146,12 @@ void control (void* argument) {
 	}
 }
 
+ void motor_thread(void* argument) {
+	 for (;;) {
+			forward();
+			backward();
+	 }
+ }
 int main (void) {
   // System Initialization
 	SystemCoreClockUpdate();
@@ -157,9 +168,11 @@ int main (void) {
   osKernelInitialize();                 // Initialize CMSIS-RTOS
 	osThreadNew(end_sound_thread, NULL, NULL);
 	osThreadNew(run_sound_thread, NULL, NULL);
-	osThreadNew(control, NULL, NULL);
+	//osThreadNew(control, NULL, NULL);
+	osThreadNew(poll_thread, NULL, NULL);
 	runningLedThread();
 	flashLedStationaryThread();
+	//osThreadNew(motor_thread, NULL, NULL);
 	osKernelStart();
   for (;;) {}
 }

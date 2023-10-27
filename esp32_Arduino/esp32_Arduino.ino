@@ -5,9 +5,15 @@
 #define RXD2 16
 #define TXD2 17
 
+// Auxiliar variables to store the current output state
+String output26State = "off";
+
+// Assign output variables to GPIO pins
+const int output26 = 26;
+
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  Serial.begin(115200);
   PS4.begin("80:45:dd:e4:c9:fa"); // change to esp32 mac address
   Serial.println("Ready.");
 
@@ -17,6 +23,7 @@ void setup() {
 }
 
 void loop() {
+  String response = "";
   // put your main code here, to run repeatedly:
   if (PS4.isConnected()) {
     if (PS4.Right()) {
@@ -62,7 +69,6 @@ void loop() {
       Serial2.write(0x40);
     }
     if (PS4.R2()) {
-    {
       response = "finish";
       Serial2.write(0x39);
     }
@@ -70,6 +76,6 @@ void loop() {
       response = "finish sound";
       Serial2.write(0x41);
     }
-    Serial.println(response);
+    if (response != "") Serial.println(response);
   }
 }

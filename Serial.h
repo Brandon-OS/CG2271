@@ -6,5 +6,5 @@
 // Function prototypes
 void initUART2(uint32_t);
 uint8_t serial(void);
-
+uint8_t UART2_Receive_Poll(void);
 #endif
