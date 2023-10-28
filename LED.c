@@ -79,16 +79,17 @@ led_node* initBackLED() {
 }
 
 
-void offAllLED(void) {
+led_node* offAllLED(void) {
 	led_node* nodes = initFrontLED();
 	for (int i = 0; i < NUM_LEDS; i++) {
 		setLEDOutput(nodes[i], OFF);
 	}
+	
+	return nodes;
 }
 
 void flashLEDFast(void *argument) {
 	led_node* nodes = initBackLED();
-	offAllLED();
 	for (;;) {
 		osEventFlagsWait(flagStation, 0x01, osFlagsNoClear, osWaitForever);
 		setLEDOutput(nodes[0], ON);
@@ -121,7 +122,6 @@ void flashLEDFast(void *argument) {
 
 void flashLEDSlow(void *argument) {
 	led_node* nodes = initBackLED();
-	offAllLED();
 	for (;;) {
 		osEventFlagsWait(flagRunning, 0x01, osFlagsNoClear, osWaitForever);
 		setLEDOutput(nodes[0], ON);
@@ -153,7 +153,7 @@ void flashLEDSlow(void *argument) {
 }
 
 void lightAllLED(void *argument) {
-	led_node* nodes = initFrontLED();
+	led_node* nodes = offAllLED();
 	for (int i = 0; i < NUM_LEDS; i++) {
 		osEventFlagsWait(flagStation, 0x01, osFlagsNoClear, osWaitForever);
 		setLEDOutput(nodes[i], ON);
@@ -161,8 +161,7 @@ void lightAllLED(void *argument) {
 }
 
 void runningLED(void *argument) {
-	led_node* nodes = initFrontLED();
-	offAllLED();
+	led_node* nodes = offAllLED();
 	int left = 1;
 	int right = 0;
 	for (;;) {

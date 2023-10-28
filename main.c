@@ -95,6 +95,13 @@ void end_sound_thread (void *argument) {
 	}
 }
 
+void motor_thread (void *argument) {
+	for (;;) {
+		osEventFlagsWait(flagRunning, 0x01, osFlagsNoClear, osWaitForever);
+		forward();
+	}
+}
+
 void control (void* argument) {
 	osEventFlagsClear(flagRunning, 0x01);
 	osEventFlagsSet(flagRunningSound, 0x01);
@@ -102,24 +109,24 @@ void control (void* argument) {
 	
 	for (;;) {
 		if (rx_data == 0x30) { 
-			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
+			osEventFlagsSet(flagRunning, 0x01);
 			forward();
 		} else if (rx_data == 0x31) { 
-			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
+			osEventFlagsSet(flagRunning, 0x01);
 			backward();
 		} else if (rx_data == 0x32) { 
-			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
+			osEventFlagsSet(flagRunning, 0x01);
 			left();
 		} else if (rx_data == 0x33) {  
 			osEventFlagsSet(flagRunning, 0x01);
 			osEventFlagsClear(flagStation, 0x01);
 			right();
 		} else if (rx_data == 0x34) { 
-			osEventFlagsSet(flagStation, 0x01);
 			osEventFlagsClear(flagRunning, 0x01);
+			osEventFlagsSet(flagStation, 0x01);
 			stop();
 		} else if (rx_data == 0x35) { 
 			osEventFlagsSet(flagRunning, 0x01);
@@ -151,13 +158,6 @@ void control (void* argument) {
 		
 	}
 }
-
- void motor_thread(void* argument) {
-	 for (;;) {
-			forward();
-			backward();
-	 }
- }
  
 int main (void) {
   // System Initialization
@@ -176,11 +176,13 @@ int main (void) {
 	osThreadNew(end_sound_thread, NULL, NULL);
 	osThreadNew(run_sound_thread, NULL, NULL);
 	osThreadNew(control, NULL, NULL);
+	//osThreadNew(motor_thread, NULL, NULL);
 	//osThreadNew(poll_thread, NULL, NULL);
 	runningLedThread();
 	flashLedStationaryThread();
 	flashLedMovingThread();
 	lightAllLedThread();
+	
 	//osThreadNew(motor_thread, NULL, NULL);
 	osKernelStart();
   for (;;) {}
