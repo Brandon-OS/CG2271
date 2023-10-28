@@ -1,4 +1,4 @@
-#include "MKL25Z4.h" 
+/*#include "MKL25Z4.h" 
 #include "cmsis_os2.h"
 #include "common.h"
 #define MASK(x) (1 << (x))
@@ -192,4 +192,4 @@ void runningLED(void *argument) {
 			}
 		}
 	}
-}
+}*/

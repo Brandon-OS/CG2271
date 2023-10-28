@@ -1,4 +1,4 @@
-#ifndef LED_H
+/*#ifndef LED_H
 #define LED_H
 #include "MKL25Z4.h"
 #include "cmsis_os2.h"
@@ -47,3 +47,4 @@ osThreadId_t lightAllLedThread(void) {
 }
 
 #endif
+*/

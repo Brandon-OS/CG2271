@@ -32,51 +32,52 @@ void loop() {
       response = "right";
       Serial2.write(0x33);
     }
-    if (PS4.Down()) {
+    else if (PS4.Down()) {
       response = "backward";
       Serial2.write(0x31);
     }
-    if (PS4.Up()) {
+    else if (PS4.Up()) {
       response = "forward";
       Serial2.write(0x30);
     }
-    if (PS4.Left()) {
+    else if (PS4.Left()) {
       response = "left ";
       Serial2.write(0x32);
     }
-
-    if (PS4.UpRight()) {
+    else if (PS4.UpRight()) {
       response = "right forward";
       Serial2.write(0x35);
     }
-    if (PS4.DownRight()) {
+    else if (PS4.DownRight()) {
       response = "right backward";
       Serial2.write(0x37);
     }
-    if (PS4.UpLeft()) {
+    else if (PS4.UpLeft()) {
       response = "left forward";
       Serial2.write(0x36);
     }
-    if (PS4.DownLeft()) {
+    else if (PS4.DownLeft()) {
       response = "left backward";
       Serial2.write(0x38);
     }
-
-    if (PS4.L2()) {
+    else if (PS4.L2()) {
       response = "stop";
       Serial2.write(0x34);
     }
-    if (PS4.L1()) {
+    else if (PS4.L1()) {
       response = "stop sound";
       Serial2.write(0x40);
     }
-    if (PS4.R2()) {
+    else if (PS4.R2()) {
       response = "finish";
       Serial2.write(0x39);
     }
-    if (PS4.R1()) {
+    else if (PS4.R1()) {
       response = "finish sound";
       Serial2.write(0x41);
+    } else {
+      response = "stop";
+      Serail2.write(0x34);  
     }
     Serial.println(response);
   }
