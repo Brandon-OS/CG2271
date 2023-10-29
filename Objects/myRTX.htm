@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\myRTX.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\myRTX.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Sat Oct 28 14:53:29 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Sun Oct 29 13:13:45 2023
 <BR><P>
-<H3>Maximum Stack Usage =        364 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        348 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-runningLED &rArr; offAllLED &rArr; initFrontLED &rArr; initLED
+runningLED &rArr; initFrontLED &rArr; initLED
 <P>
 <H3>
 Mutually Recursive functions
@@ -349,7 +349,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[78]"></a>osRtxKernelPreInit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_kernel.o(.text.osRtxKernelPreInit))
-<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelInitialize
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelInitialize
 </UL>
 
 <P><STRONG><a name="[ab]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
@@ -501,7 +501,7 @@ Global Symbols
 <LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_sound_thread
 </UL>
 
-<P><STRONG><a name="[74]"></a>initAudio</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, audio.o(.text.initAudio))
+<P><STRONG><a name="[73]"></a>initAudio</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, audio.o(.text.initAudio))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = initAudio
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -521,7 +521,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initLED
 </UL>
-<BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;offAllLED
+<BR>[Called By]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runningLED
+<LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lightAllLED
 </UL>
 
 <P><STRONG><a name="[6a]"></a>initLED</STRONG> (Thumb, 84 bytes, Stack size 28 bytes, main.o(.text.initLED))
@@ -531,7 +532,7 @@ Global Symbols
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initFrontLED
 </UL>
 
-<P><STRONG><a name="[73]"></a>initMotor</STRONG> (Thumb, 228 bytes, Stack size 16 bytes, motorcontrol.o(.text.initMotor))
+<P><STRONG><a name="[72]"></a>initMotor</STRONG> (Thumb, 228 bytes, Stack size 16 bytes, motorcontrol.o(.text.initMotor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = initMotor
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -591,15 +592,15 @@ Global Symbols
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;forward
 </UL>
 
-<P><STRONG><a name="[2c]"></a>lightAllLED</STRONG> (Thumb, 76 bytes, Stack size 24 bytes, main.o(.text.lightAllLED))
-<BR><BR>[Stack]<UL><LI>Max Depth = 348<LI>Call Chain = lightAllLED &rArr; offAllLED &rArr; initFrontLED &rArr; initLED
+<P><STRONG><a name="[2c]"></a>lightAllLED</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, main.o(.text.lightAllLED))
+<BR><BR>[Stack]<UL><LI>Max Depth = 332<LI>Call Chain = lightAllLED &rArr; initFrontLED &rArr; initLED
 </UL>
-<BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;offAllLED
+<BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initFrontLED
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setLEDOutput
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text.lightAllLedThread)
 </UL>
-<P><STRONG><a name="[72]"></a>lightAllLedThread</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, main.o(.text.lightAllLedThread))
+<P><STRONG><a name="[71]"></a>lightAllLedThread</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, main.o(.text.lightAllLedThread))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = lightAllLedThread &rArr; osThreadNew
 </UL>
 <BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadNew
@@ -610,28 +611,26 @@ Global Symbols
 <P><STRONG><a name="[26]"></a>main</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = main &rArr; initUART2 &rArr; __NVIC_SetPriority
 </UL>
-<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelStart
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelInitialize
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelStart
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelInitialize
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initUART2
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initAudio
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initMotor
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initAudio
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initMotor
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemCoreClockUpdate
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lightAllLedThread
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lightAllLedThread
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flashLedMovingThread
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flashLedStationaryThread
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadNew
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runningLedThread
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runningLedThread
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[71]"></a>offAllLED</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, main.o(.text.offAllLED))
-<BR><BR>[Stack]<UL><LI>Max Depth = 324<LI>Call Chain = offAllLED &rArr; initFrontLED &rArr; initLED
+<P><STRONG><a name="[77]"></a>offAllLED</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, main.o(.text.offAllLED))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = offAllLED &rArr; setLEDOutput
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initFrontLED
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setLEDOutput
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setLEDOutput
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runningLED
-<LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lightAllLED
 </UL>
 
 <P><STRONG><a name="[5e]"></a>osDelay</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, rtx_delay.o(.text.osDelay))
@@ -646,7 +645,7 @@ Global Symbols
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flashLEDFast
 </UL>
 
-<P><STRONG><a name="[75]"></a>osKernelInitialize</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, rtx_kernel.o(.text.osKernelInitialize))
+<P><STRONG><a name="[74]"></a>osKernelInitialize</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, rtx_kernel.o(.text.osKernelInitialize))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = osKernelInitialize
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxKernelPreInit
@@ -654,7 +653,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[77]"></a>osKernelStart</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, rtx_kernel.o(.text.osKernelStart))
+<P><STRONG><a name="[76]"></a>osKernelStart</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, rtx_kernel.o(.text.osKernelStart))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = osKernelStart
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -915,10 +914,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = osThreadNew
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lightAllLedThread
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lightAllLedThread
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flashLedMovingThread
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flashLedStationaryThread
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runningLedThread
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runningLedThread
 </UL>
 
 <P><STRONG><a name="[63]"></a>playEndAudio</STRONG> (Thumb, 140 bytes, Stack size 32 bytes, audio.o(.text.playEndAudio))
@@ -996,16 +995,17 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text.main)
 </UL>
-<P><STRONG><a name="[3b]"></a>runningLED</STRONG> (Thumb, 248 bytes, Stack size 40 bytes, main.o(.text.runningLED))
-<BR><BR>[Stack]<UL><LI>Max Depth = 364<LI>Call Chain = runningLED &rArr; offAllLED &rArr; initFrontLED &rArr; initLED
+<P><STRONG><a name="[3b]"></a>runningLED</STRONG> (Thumb, 272 bytes, Stack size 40 bytes, main.o(.text.runningLED))
+<BR><BR>[Stack]<UL><LI>Max Depth = 348<LI>Call Chain = runningLED &rArr; initFrontLED &rArr; initLED
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;offAllLED
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;offAllLED
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initFrontLED
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setLEDOutput
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text.runningLedThread)
 </UL>
-<P><STRONG><a name="[76]"></a>runningLedThread</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, main.o(.text.runningLedThread))
+<P><STRONG><a name="[75]"></a>runningLedThread</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, main.o(.text.runningLedThread))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = runningLedThread &rArr; osThreadNew
 </UL>
 <BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadNew
@@ -1020,7 +1020,7 @@ Global Symbols
 <LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lightAllLED
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flashLEDSlow
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flashLEDFast
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;offAllLED
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;offAllLED
 </UL>
 
 <P><STRONG><a name="[58]"></a>stop</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, motorcontrol.o(.text.stop))

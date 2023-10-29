@@ -77,7 +77,7 @@ void loop() {
       Serial2.write(0x41);
     } else {
       response = "stop";
-      Serail2.write(0x34);  
+      Serial2.write(0x34);  
     }
     Serial.println(response);
   }

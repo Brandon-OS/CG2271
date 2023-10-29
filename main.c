@@ -20,6 +20,7 @@ bool endSound = 0;
 bool finish = 0;
 bool running = 0;
 bool station = 0;
+bool isAlight = 0;
 
 typedef struct node {
 	int portNumber;
@@ -96,13 +97,10 @@ led_node* initBackLED() {
 }
 
 
-led_node* offAllLED(void) {
-	led_node* nodes = initFrontLED();
+void offAllLED(led_node* nodes) {
 	for (int i = 0; i < NUM_LEDS; i++) {
 		setLEDOutput(nodes[i], OFF);
 	}
-	
-	return nodes;
 }
 
 void flashLEDFast(void *argument) {
@@ -174,22 +172,27 @@ void flashLEDSlow(void *argument) {
 }
 
 void lightAllLED(void *argument) {
-	led_node* nodes = offAllLED();
+	led_node* nodes = initFrontLED();
+	for (;;) {
+		if (station) {
 	for (int i = 0; i < NUM_LEDS; i++) {
 		//osEventFlagsWait(flagStation, 0x01, osFlagsNoClear, osWaitForever);
-		if (station == 1) {
+			isAlight = 1;
 		setLEDOutput(nodes[i], ON);
-		}
 	}
+}
+}
 }
 
 void runningLED(void *argument) {
-	led_node* nodes = offAllLED();
+	led_node* nodes = initFrontLED();
 	int left = 1;
 	int right = 0;
 	for (;;) {
 		//osEventFlagsWait(flagRunning, 0x01, osFlagsNoClear, osWaitForever);
 		if (running == 1) {
+			if (isAlight) offAllLED(nodes);
+			isAlight = 0;
 		if (left == 1) {
 			for (int i = 0; i < NUM_LEDS; i++) {
 				setLEDOutput(nodes[i], ON);
