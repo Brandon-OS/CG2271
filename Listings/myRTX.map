@@ -71,10 +71,10 @@ Section Cross References
     main.o(.text.control) refers to motorcontrol.o(.text.left) for left
     main.o(.text.control) refers to motorcontrol.o(.text.right) for right
     main.o(.text.control) refers to motorcontrol.o(.text.stop) for stop
-    main.o(.text.control) refers to motorcontrol.o(.text.rightForward) for rightForward
     main.o(.text.control) refers to motorcontrol.o(.text.leftForward) for leftForward
-    main.o(.text.control) refers to motorcontrol.o(.text.rightBackward) for rightBackward
+    main.o(.text.control) refers to motorcontrol.o(.text.rightForward) for rightForward
     main.o(.text.control) refers to motorcontrol.o(.text.leftBackward) for leftBackward
+    main.o(.text.control) refers to motorcontrol.o(.text.rightBackward) for rightBackward
     main.o(.text.control) refers to audio.o(.text.stopSound) for stopSound
     main.o(.text.control) refers to rtx_delay.o(.text.osDelay) for osDelay
     main.o(.text.control) refers to main.o(.bss.running) for running

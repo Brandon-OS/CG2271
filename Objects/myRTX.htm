@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\myRTX.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\myRTX.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Sun Oct 29 13:13:45 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Sun Oct 29 13:35:13 2023
 <BR><P>
 <H3>Maximum Stack Usage =        348 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -414,13 +414,13 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[2f]"></a>control</STRONG> (Thumb, 384 bytes, Stack size 16 bytes, main.o(.text.control))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = control &rArr; leftBackward &rArr; leftMotorMove &rArr; pwm_cal &rArr; __aeabi_fmul
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = control &rArr; rightBackward &rArr; leftMotorMove &rArr; pwm_cal &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopSound
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftBackward
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rightBackward
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftForward
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rightForward
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rightBackward
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftBackward
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rightForward
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftForward
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left
@@ -558,7 +558,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;control
 </UL>
 
-<P><STRONG><a name="[5c]"></a>leftBackward</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, motorcontrol.o(.text.leftBackward))
+<P><STRONG><a name="[5b]"></a>leftBackward</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, motorcontrol.o(.text.leftBackward))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = leftBackward &rArr; leftMotorMove &rArr; pwm_cal &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftMotorMove
@@ -567,7 +567,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;control
 </UL>
 
-<P><STRONG><a name="[5a]"></a>leftForward</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, motorcontrol.o(.text.leftForward))
+<P><STRONG><a name="[59]"></a>leftForward</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, motorcontrol.o(.text.leftForward))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = leftForward &rArr; leftMotorMove &rArr; pwm_cal &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftMotorMove
@@ -581,10 +581,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_cal
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftBackward
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rightBackward
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftForward
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rightForward
+<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rightBackward
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftBackward
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rightForward
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftForward
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left
@@ -951,7 +951,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;control
 </UL>
 
-<P><STRONG><a name="[5b]"></a>rightBackward</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, motorcontrol.o(.text.rightBackward))
+<P><STRONG><a name="[5c]"></a>rightBackward</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, motorcontrol.o(.text.rightBackward))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = rightBackward &rArr; leftMotorMove &rArr; pwm_cal &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftMotorMove
@@ -960,7 +960,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;control
 </UL>
 
-<P><STRONG><a name="[59]"></a>rightForward</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, motorcontrol.o(.text.rightForward))
+<P><STRONG><a name="[5a]"></a>rightForward</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, motorcontrol.o(.text.rightForward))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = rightForward &rArr; leftMotorMove &rArr; pwm_cal &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftMotorMove
@@ -974,10 +974,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_cal
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftBackward
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rightBackward
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftForward
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rightForward
+<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rightBackward
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftBackward
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rightForward
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leftForward
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left

@@ -385,25 +385,27 @@ void control (void* argument) {
 			//osEventFlagsClear(flagStation, 0x01);
 			station = 0; 
 			running = 1;
-			rightForward();
+			leftForward();
 		} else if (rx_data == 0x36) { 
 			//osEventFlagsSet(flagRunning, 0x01);
 			//osEventFlagsClear(flagStation, 0x01);
 			station = 0; 
 			running = 1;
-			leftForward();
+			rightForward();
+			
 		} else if (rx_data == 0x37) {  
 			//osEventFlagsSet(flagRunning, 0x01);
 			//osEventFlagsClear(flagStation, 0x01);
 			station = 0; 
 			running = 1;
-			rightBackward();
+			leftBackward();
 		} else if (rx_data == 0x38) {
 			//osEventFlagsSet(flagRunning, 0x01);
 			//osEventFlagsClear(flagStation, 0x01);
 			station = 0; 
 			running = 1;
-			leftBackward();
+			rightBackward();
+			
 		} else if (rx_data == 0x39) { 
 			//osEventFlagsClear(flagRunningSound, 0x01);
 			//osEventFlagsSet(flagEndingSound, 0x01);

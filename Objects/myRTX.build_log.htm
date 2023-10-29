@@ -133,6 +133,101 @@ static
 17 warnings generated.
 compiling MotorControl.c...
 assembling startup_MKL25Z4.s...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(27): warning: In file included from...
+./RTE/CMSIS\RTX_Config.h(38): warning: // comments are not allowed in this language [-Wcomment]
+//-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
+/// Kernel Information
+^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(34): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_evr.h(29): warning: // comments are not allowed in this language [-Wcomment]
+#include "cmsis_os2.h"                  // CMSIS RTOS API
+                                        ^
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(37): warning: // comments are not allowed in this language [-Wcomment]
+// System Configuration
+^
+5 warnings generated.
+compiling rtx_lib.c...
+compiling system_MKL25Z4.c...
+RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
+/// Kernel Information
+^
+RTE/CMSIS/RTX_Config.c(31): warning: // comments are not allowed in this language [-Wcomment]
+// OS Idle Thread
+^
+3 warnings generated.
+compiling RTX_Config.c...
+Serial.c(2): warning: In file included from...
+./Serial.h(5): warning: // comments are not allowed in this language [-Wcomment]
+// Function prototypes
+^
+1 warning generated.
+compiling Serial.c...
+Audio.c(2): warning: In file included from...
+./MotorControl.h(7): warning: // comments are not allowed in this language [-Wcomment]
+// Function prototypes
+^
+Audio.c(3): warning: In file included from...
+./Audio.h(101): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void playEndAudio();
+                 ^
+                  void
+Audio.c(4): warning: In file included from...
+C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
+//  ==== Enumerations, structures, defines ====
+^
+Audio.c(10): warning: // comments are not allowed in this language [-Wcomment]
+        return ((48000000 / 128) / freq) - 1;  // assume 48 MHz and 128 prescaler (PS)
+                                               ^
+Audio.c(14): warning: implicit conversion turns floating-point number into integer: 'float' to 'int' [-Wfloat-conversion]
+        return (((48000000 / 128) / freq) - 1) * duty_cycle;
+        ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+Audio.c(17): warning: no previous extern declaration for non-static variable 'end_song' [-Wmissing-variable-declarations]
+int end_song[] = {
+    ^
+Audio.c(17): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int end_song[] = {
+^
+Audio.c(42): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+void playEndAudio() {
+                 ^
+                  void
+Audio.c(44): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+        for (int i = 0; i < size; ++i) {
+             ^
+Audio.c(44): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+Audio.c(46): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
+                        for (int j = 0; j < 16/end_song[2*i+1]; j++) {
+                             ^
+Audio.c(46): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+Audio.c(48): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                                TPM0->MOD = freq;
+                                          ~ ^~~~
+Audio.c(49): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                                TPM0_C3V = duty_cycle_calc(freq, (float) 0.1);  
+                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Audio.c(42): warning: no previous prototype for function 'playEndAudio' [-Wmissing-prototypes]
+void playEndAudio() {
+     ^
+./Audio.h(101): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
+void playEndAudio();
+     ^
+                  void
+14 warnings generated.
+compiling Audio.c...
 main.c(7): warning: In file included from...
 C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
 //  ==== Enumerations, structures, defines ====
@@ -522,107 +617,12 @@ static void delay(volatile uint32_t nof) {
             ^
 83 warnings generated.
 compiling main.c...
-RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
-//  ==== Enumerations, structures, defines ====
-^
-RTE/CMSIS/RTX_Config.c(29): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
-/// Kernel Information
-^
-RTE/CMSIS/RTX_Config.c(31): warning: // comments are not allowed in this language [-Wcomment]
-// OS Idle Thread
-^
-3 warnings generated.
-compiling RTX_Config.c...
 LED.c(195): warning: no newline at end of file [-Wnewline-eof]
 }*/
    ^
 LED.c(195): warning: ISO C requires a translation unit to contain at least one declaration [-Wempty-translation-unit]
 2 warnings generated.
 compiling LED.c...
-Audio.c(2): warning: In file included from...
-./MotorControl.h(7): warning: // comments are not allowed in this language [-Wcomment]
-// Function prototypes
-^
-Audio.c(3): warning: In file included from...
-./Audio.h(101): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void playEndAudio();
-                 ^
-                  void
-Audio.c(4): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
-//  ==== Enumerations, structures, defines ====
-^
-Audio.c(10): warning: // comments are not allowed in this language [-Wcomment]
-        return ((48000000 / 128) / freq) - 1;  // assume 48 MHz and 128 prescaler (PS)
-                                               ^
-Audio.c(14): warning: implicit conversion turns floating-point number into integer: 'float' to 'int' [-Wfloat-conversion]
-        return (((48000000 / 128) / freq) - 1) * duty_cycle;
-        ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-Audio.c(17): warning: no previous extern declaration for non-static variable 'end_song' [-Wmissing-variable-declarations]
-int end_song[] = {
-    ^
-Audio.c(17): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-int end_song[] = {
-^
-Audio.c(42): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void playEndAudio() {
-                 ^
-                  void
-Audio.c(44): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-        for (int i = 0; i < size; ++i) {
-             ^
-Audio.c(44): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-Audio.c(46): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-                        for (int j = 0; j < 16/end_song[2*i+1]; j++) {
-                             ^
-Audio.c(46): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-Audio.c(48): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-                                TPM0->MOD = freq;
-                                          ~ ^~~~
-Audio.c(49): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-                                TPM0_C3V = duty_cycle_calc(freq, (float) 0.1);  
-                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Audio.c(42): warning: no previous prototype for function 'playEndAudio' [-Wmissing-prototypes]
-void playEndAudio() {
-     ^
-./Audio.h(101): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
-void playEndAudio();
-     ^
-                  void
-14 warnings generated.
-compiling Audio.c...
-Serial.c(2): warning: In file included from...
-./Serial.h(5): warning: // comments are not allowed in this language [-Wcomment]
-// Function prototypes
-^
-1 warning generated.
-compiling Serial.c...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(27): warning: In file included from...
-./RTE/CMSIS\RTX_Config.h(38): warning: // comments are not allowed in this language [-Wcomment]
-//-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
-^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(31): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/Include\cmsis_os2.h(73): warning: // comments are not allowed in this language [-Wcomment]
-//  ==== Enumerations, structures, defines ====
-^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(28): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_os.h(39): warning: // comments are not allowed in this language [-Wcomment]
-/// Kernel Information
-^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(34): warning: In file included from...
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Include\rtx_evr.h(29): warning: // comments are not allowed in this language [-Wcomment]
-#include "cmsis_os2.h"                  // CMSIS RTOS API
-                                        ^
-C:/Users/Brandon OS/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c(37): warning: // comments are not allowed in this language [-Wcomment]
-// System Configuration
-^
-5 warnings generated.
-compiling rtx_lib.c...
-compiling system_MKL25Z4.c...
 linking...
 Program Size: Code=11084 RO-data=676 RW-data=976 ZI-data=7288  
 ".\Objects\myRTX.axf" - 0 Error(s), 125 Warning(s).
@@ -679,7 +679,7 @@ Package Vendor: Keil
       Source file:   Device/Source/system_MKL25Z4.c
       Source file:   Device/Source/ARM/startup_MKL25Z4.s
       Include file:  Device/Source/system_MKL25Z4.h
-Build Time Elapsed:  00:00:12
+Build Time Elapsed:  00:00:10
 </pre>
 </body>
 </html>
